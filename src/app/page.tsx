@@ -1,7 +1,12 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import {
   ArrowDown,
   Github,
@@ -17,7 +22,6 @@ import {
   Wrench,
   Sparkles,
   ExternalLink,
-  MessageCircleHeart,
 } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -26,75 +30,8 @@ import {
   scaleOnHover,
   techStack,
 } from '@/lib/constants';
+import { Fireflies } from '@/components/animations/Fireflies';
 
-// Enhanced Firefly component with proper fade transitions and glow effect
-const Firefly = ({ delay = 0, index = 0 }) => {
-  // Generate stable positions based on index to avoid re-renders
-  const positions = useMemo(() => {
-    const pos1 = {
-      x: ((index * 17 + 23) % 90) + 5,
-      y: ((index * 23 + 37) % 90) + 5,
-    };
-    const pos2 = {
-      x: ((index * 31 + 47) % 90) + 5,
-      y: ((index * 41 + 13) % 90) + 5,
-    };
-    const pos3 = {
-      x: ((index * 43 + 67) % 90) + 5,
-      y: ((index * 29 + 71) % 90) + 5,
-    };
-    return [pos1, pos2, pos3];
-  }, [index]);
-
-  return (
-    <motion.div
-      className='absolute pointer-events-none'
-      initial={{
-        left: `${positions[0].x}%`,
-        top: `${positions[0].y}%`,
-        opacity: 0,
-      }}
-      animate={{
-        left: [
-          `${positions[0].x}%`,
-          `${positions[1].x}%`,
-          `${positions[2].x}%`,
-          `${positions[0].x}%`,
-        ],
-        top: [
-          `${positions[0].y}%`,
-          `${positions[1].y}%`,
-          `${positions[2].y}%`,
-          `${positions[0].y}%`,
-        ],
-        opacity: [0, 0.8, 0.3, 0.9, 0.1, 0.7, 0],
-      }}
-      transition={{
-        duration: 15,
-        repeat: Infinity,
-        delay,
-        ease: 'easeInOut',
-        times: [0, 0.2, 0.4, 0.6, 0.7, 0.9, 1],
-      }}
-    >
-      {/* Outer glow */}
-      <div className='absolute w-8 h-8 -translate-x-1/2 -translate-y-1/2'>
-        <div className='w-full h-full bg-gradient-to-r from-amber-300/60 via-yellow-400/40 to-orange-300/30 rounded-full blur-lg' />
-      </div>
-
-      {/* Middle glow */}
-      <div className='absolute w-4 h-4 -translate-x-1/2 -translate-y-1/2'>
-        <div className='w-full h-full bg-gradient-to-r from-yellow-200/80 to-amber-200/70 rounded-full blur-sm' />
-      </div>
-
-      {/* Inner light core */}
-      <div className='absolute w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-yellow-100 to-amber-100 rounded-full shadow-lg shadow-amber-400/60'>
-        {/* Bright center */}
-        <div className='absolute inset-0.5 bg-white/90 rounded-full' />
-      </div>
-    </motion.div>
-  );
-};
 export default function HomePage() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroRef = useRef(null);
@@ -105,15 +42,7 @@ export default function HomePage() {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   // Cycling words for dynamic text effect
-  const cyclicWords = [
-    'fabulous',
-    'reactive',
-    'functional',
-    'accessible',
-    'user-centered',
-    'cool',
-    'compelling',
-  ];
+  const cyclicWords = ['functional', 'accessible', 'compelling', 'performant'];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % cyclicWords.length);
@@ -127,7 +56,7 @@ export default function HomePage() {
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {/* Firefly particles */}
         {[...Array(6)].map((_, i) => (
-          <Firefly key={i} delay={i * 2} index={i} />
+          <Fireflies key={i} delay={i * 2} index={i} />
         ))}
 
         {/* Large gradient orbs */}
@@ -226,29 +155,31 @@ export default function HomePage() {
             className='text-xl md:text-3xl text-gray-300 mb-12 leading-relaxed'
           >
             <span>Full Stack Developer crafting </span>
-            <motion.span
-              key={currentWordIndex}
-              className='text-emerald-400 font-semibold relative inline-block'
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.8, ease: 'easeInOut' }}
-            >
-              {cyclicWords[currentWordIndex]}
-              {/* Glowing effect */}
-              <motion.div
-                className='absolute inset-0 bg-gradient-to-r from-emerald-400/40 to-teal-400/40 blur-md rounded-lg -z-10'
-                animate={{
-                  opacity: [0.4, 0.8, 0.4],
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-            </motion.span>
+            <AnimatePresence mode='wait'>
+              <motion.span
+                key={currentWordIndex}
+                className='text-emerald-400 font-semibold relative inline-block'
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+              >
+                {cyclicWords[currentWordIndex]}
+                {/* Glowing effect */}
+                <motion.div
+                  className='absolute inset-0 bg-gradient-to-r from-emerald-400/40 to-teal-400/40 blur-md rounded-lg -z-10'
+                  animate={{
+                    opacity: [0.4, 0.8, 0.4],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+              </motion.span>
+            </AnimatePresence>
             <span> digital experiences</span>
           </motion.div>
 

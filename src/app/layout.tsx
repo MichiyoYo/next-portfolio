@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lekton } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
 
-const inter = Inter({
-  variable: '--font-inter',
+const lekton = Lekton({
+  weight: '400',
+  variable: '--font-lekton',
   subsets: ['latin'],
 });
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' className='scroll-smooth'>
-      <body className={`${inter.className} antialiased overflow-x-hidden`}>
+      <body className={`${lekton.className} antialiased overflow-x-hidden`}>
         {/* Background texture overlay - creates that rice paper effect you mentioned */}
         <div className='fixed inset-0 opacity-30 pointer-events-none'>
           {/*
