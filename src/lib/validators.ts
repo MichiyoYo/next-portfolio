@@ -20,7 +20,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Common validation rules
 export const validationRules = {
-  required: (fieldName: string): ValidationRule => ({
+  required: (): ValidationRule => ({
     required: true,
   }),
 
