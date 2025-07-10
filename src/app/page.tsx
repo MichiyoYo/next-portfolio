@@ -92,7 +92,7 @@ export default function HomePage() {
         >
           {/* Decorative elements */}
           <motion.div
-            className='absolute -top-20 -left-20 text-emerald-400/20'
+            className='absolute top-1/2 -left-50 text-emerald-400/20'
             animate={{
               y: [-10, 10, -10],
             }}

@@ -1,3 +1,4 @@
+// src/components/Navigation.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -5,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import AnimatedLogo from '@/components/ui/AnimatedLogo';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -37,14 +39,8 @@ export default function Navigation() {
     >
       <div className='max-w-6xl mx-auto px-4'>
         <div className='flex items-center justify-between h-16'>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              href='/'
-              className='text-xl font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent'
-            >
-              Cristina<span className='text-amber-400'>Lester</span>
-            </Link>
-          </motion.div>
+          {/* Animated Logo */}
+          <AnimatedLogo />
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center space-x-8'>
