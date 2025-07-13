@@ -103,7 +103,7 @@ export default function ContactPage() {
               className='text-4xl md:text-6xl font-bold text-white mb-6'
             >
               <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
-                Let's Work Together
+                Let&apos;s Work Together
               </span>
             </motion.h1>
 
@@ -111,10 +111,10 @@ export default function ContactPage() {
               variants={fadeInUp}
               className='text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed'
             >
-              Have a project in mind? I'd love to hear about it. Whether you're
-              looking for a technical co-founder, need help with a complex web
-              application, or want to discuss UX improvements, let's start a
-              conversation.
+              Have a project in mind? I&apos;d love to hear about it. Whether
+              you&apos;re looking for a technical co-founder, need help with a
+              complex web application, or want to discuss UX improvements,
+              let&apos;s start a conversation.
             </motion.p>
           </motion.div>
 
@@ -173,7 +173,7 @@ export default function ContactPage() {
               </span>
             </h2>
             <p className='text-lg text-gray-300'>
-              Fill out the form below and I'll get back to you as soon as
+              Fill out the form below and I&apos;ll get back to you as soon as
               possible.
             </p>
           </motion.div>
@@ -350,13 +350,13 @@ export default function ContactPage() {
             <div className='flex items-center justify-center gap-3 mb-4'>
               <Coffee className='text-emerald-400' size={24} />
               <h3 className='text-xl font-bold text-white'>
-                Let's Grab Coffee
+                Let&apos;s Grab Coffee
               </h3>
             </div>
             <p className='text-gray-300 text-center mb-6'>
-              Sometimes the best conversations happen over coffee. If you're in
-              the LA area, I'd love to meet up and chat about your project in
-              person.
+              Sometimes the best conversations happen over coffee. If
+              you&apos;re in the LA area, I&apos;d love to meet up and chat
+              about your project in person.
             </p>
             <div className='text-center'>
               <Link
