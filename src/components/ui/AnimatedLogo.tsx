@@ -54,24 +54,6 @@ const AnimatedLogo = () => {
           >
             <span className='font-extrabold'>CL</span>
           </motion.div>
-
-          {/* Inner sparkle effect */}
-          {/* <motion.div
-            className='absolute inset-0 flex items-center justify-center'
-            animate={{
-              rotate: isHovered ? 180 : 0,
-              scale: isHovered ? 1.1 : 1,
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            <Sparkles
-              size={12}
-              className='text-white/60'
-              style={{
-                filter: 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))',
-              }}
-            />
-          </motion.div> */}
         </motion.div>
 
         {/* Floating sparkles around the logo */}

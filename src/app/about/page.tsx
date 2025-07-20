@@ -1,4 +1,3 @@
-// src/app/about/page.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -9,12 +8,10 @@ import {
   Users,
   Coffee,
   BookOpen,
-  //   Award,
   Zap,
   Heart,
   Rocket,
 } from 'lucide-react';
-// import Image from 'next/image';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
 
@@ -107,7 +104,6 @@ const values = [
 export default function AboutPage() {
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
-      {/* Hero Section */}
       <section className='py-20 px-4'>
         <div className='max-w-6xl mx-auto'>
           <motion.div
@@ -116,7 +112,6 @@ export default function AboutPage() {
             variants={staggerChildren}
             className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'
           >
-            {/* Text Content */}
             <motion.div variants={fadeInUp} className='space-y-8'>
               <div>
                 <motion.div
@@ -186,7 +181,6 @@ export default function AboutPage() {
               </motion.div>
             </motion.div>
 
-            {/* Profile Image */}
             <motion.div variants={fadeInUp} className='relative'>
               <motion.div
                 className='relative w-80 h-80 mx-auto lg:w-96 lg:h-96'

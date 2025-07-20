@@ -37,7 +37,6 @@ export default function Footer() {
 
   return (
     <footer className='relative bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900/20 border-t border-emerald-500/20'>
-      {/* Subtle animated background pattern */}
       <div className='absolute inset-0 opacity-10'>
         <motion.div
           className='w-full h-full bg-gradient-to-r from-emerald-400/10 to-teal-400/10'
@@ -54,7 +53,6 @@ export default function Footer() {
 
       <div className='relative z-10 max-w-6xl mx-auto px-4 py-12'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
-          {/* Brand and Description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,4 +1,3 @@
-// src/app/projects/page.tsx
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,11 +13,11 @@ import {
   Smartphone,
   Package,
 } from 'lucide-react';
-// import Image from 'next/image';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
 
-// Project data - in a real app, this would come from a CMS or API
+// TODO: move projects in separate constants file
+// TODO: update projects listed
 const projects = [
   {
     id: 'portfolio-website',
@@ -269,6 +268,7 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
+                    {/* TODO: move featured badge to its own component */}
                     {/* Featured badge */}
                     {project.featured && (
                       <motion.div

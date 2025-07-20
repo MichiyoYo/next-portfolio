@@ -45,14 +45,12 @@ export function useContactForm(
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [status, setStatus] = useState<FormStatus>(initialStatus);
 
-  // Handle input changes
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
 
       setFormData((prev) => ({ ...prev, [name]: value }));
 
-      // Clear error for this field when user starts typing
       if (errors[name]) {
         setErrors((prev) => {
           const newErrors = { ...prev };
@@ -64,12 +62,10 @@ export function useContactForm(
     [errors]
   );
 
-  // Submit form
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
 
-      // Validate form
       const validation = validateForm(formData, contactFormSchema);
 
       if (!validation.isValid) {
@@ -84,7 +80,6 @@ export function useContactForm(
         if (onSubmit) {
           await onSubmit(formData);
         } else {
-          // Default form submission behavior
           await defaultFormSubmission(formData);
         }
 
@@ -94,7 +89,6 @@ export function useContactForm(
             "Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.",
         });
 
-        // Reset form on success
         setFormData(initialFormData);
       } catch (error) {
         setStatus({
@@ -108,14 +102,12 @@ export function useContactForm(
     [formData, onSubmit]
   );
 
-  // Reset form
   const resetForm = useCallback(() => {
     setFormData(initialFormData);
     setErrors({});
     setStatus(initialStatus);
   }, []);
 
-  // Clear errors
   const clearErrors = useCallback(() => {
     setErrors({});
   }, []);
@@ -131,6 +123,7 @@ export function useContactForm(
   };
 }
 
+// TODO: Implement form submission
 // Default form submission (can be replaced with actual API call)
 async function defaultFormSubmission(data: ContactFormData): Promise<void> {
   // Simulate API call

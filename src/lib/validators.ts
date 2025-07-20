@@ -15,10 +15,8 @@ export interface ValidationResult {
   errors: { [key: string]: string };
 }
 
-// Email validation regex
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Common validation rules
 export const validationRules = {
   required: (): ValidationRule => ({
     required: true,
@@ -56,7 +54,6 @@ export const validationRules = {
   }),
 };
 
-// Main validator function
 export function validateField(
   value: string,
   rule: ValidationRule,
@@ -64,32 +61,26 @@ export function validateField(
 ): string | null {
   const trimmedValue = value.trim();
 
-  // Check required
   if (rule.required && !trimmedValue) {
     return `${fieldName} is required`;
   }
 
-  // If field is empty and not required, skip other validations
   if (!trimmedValue && !rule.required) {
     return null;
   }
 
-  // Check minimum length
   if (rule.minLength && trimmedValue.length < rule.minLength) {
     return `${fieldName} must be at least ${rule.minLength} characters long`;
   }
 
-  // Check maximum length
   if (rule.maxLength && trimmedValue.length > rule.maxLength) {
     return `${fieldName} must be no more than ${rule.maxLength} characters long`;
   }
 
-  // Check pattern
   if (rule.pattern && !rule.pattern.test(trimmedValue)) {
     return `${fieldName} format is invalid`;
   }
 
-  // Run custom validation
   if (rule.custom) {
     return rule.custom(trimmedValue);
   }
@@ -97,7 +88,6 @@ export function validateField(
   return null;
 }
 
-// Validate entire form
 export function validateForm(
   data: { [key: string]: string },
   schema: ValidationSchema
@@ -120,7 +110,6 @@ export function validateForm(
   };
 }
 
-// Contact form specific schema
 export const contactFormSchema: ValidationSchema = {
   name: {
     required: true,

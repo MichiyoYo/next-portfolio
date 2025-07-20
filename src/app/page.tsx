@@ -41,8 +41,8 @@ export default function HomePage() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
-  // Cycling words for dynamic text effect
   const cyclicWords = ['functional', 'accessible', 'compelling', 'performant'];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % cyclicWords.length);
@@ -52,7 +52,6 @@ export default function HomePage() {
 
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 relative overflow-hidden'>
-      {/* Animated background elements */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {/* Firefly particles */}
         {[...Array(6)].map((_, i) => (
@@ -140,7 +139,6 @@ export default function HomePage() {
               transition={{ duration: 0.3 }}
             >
               Cristina Lester
-              {/* Subtle glow effect */}
               <motion.div
                 className='absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 blur-2xl -z-10'
                 animate={{ opacity: [0.5, 0.8, 0.5] }}
@@ -184,6 +182,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Enhanced skill badges with staggered animation */}
+          {/* TODO: move array to constants file */}
           <motion.div
             variants={fadeInUp}
             className='flex flex-wrap justify-center gap-4 mb-16'
@@ -243,7 +242,6 @@ export default function HomePage() {
             ))}
           </motion.div>
 
-          {/* Enhanced CTA buttons */}
           <motion.div
             variants={fadeInUp}
             className='flex flex-col sm:flex-row gap-6 justify-center mb-20'
@@ -274,6 +272,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Enhanced social links with floating animation */}
+          {/* TODO: move array to constanst file */}
           <motion.div
             variants={fadeInUp}
             className='flex justify-center gap-8 mb-20'
@@ -395,6 +394,7 @@ export default function HomePage() {
 
           <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
             {/* Frontend Technologies */}
+            {/* TODO: review tech stacks and update */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}

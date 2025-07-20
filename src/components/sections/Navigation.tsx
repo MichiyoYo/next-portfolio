@@ -1,4 +1,3 @@
-// src/components/Navigation.tsx
 'use client';
 
 import { motion } from 'framer-motion';

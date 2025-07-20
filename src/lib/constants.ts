@@ -35,7 +35,6 @@ export const staggerChildren = {
   },
 };
 
-// More dynamic hover animations
 export const scaleOnHover = {
   whileHover: {
     scale: 1.05,
@@ -44,7 +43,6 @@ export const scaleOnHover = {
   whileTap: { scale: 0.95 },
 };
 
-// Floating animation for decorative elements
 export const floatingAnimation = {
   y: [0, -20, 0],
   transition: {
@@ -54,8 +52,7 @@ export const floatingAnimation = {
   },
 };
 
-export // Tech stack with new emerald/teal color scheme
-const techStack = {
+export const techStack = {
   frontend: [
     { icon: Code, label: 'TypeScript', color: 'text-blue-400', delay: 0 },
     { icon: Palette, label: 'React', color: 'text-cyan-400', delay: 0.1 },

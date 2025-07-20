@@ -58,10 +58,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' className='scroll-smooth'>
       <body className={`${lekton.className} antialiased overflow-x-hidden`}>
-        {/* Background texture overlay - creates that rice paper effect you mentioned */}
         <div className='fixed inset-0 opacity-30 pointer-events-none'>
           {/*
-            Move the SVG data URL to a variable to avoid JSX parsing issues with quotes.
+          TODO:   Move the SVG data URL to a variable to avoid JSX parsing issues with quotes.
           */}
           {(() => {
             const ricePaperBg =

@@ -1,4 +1,3 @@
-// src/app/blog/page.tsx
 import { getAllBlogPosts, formatDate, BlogPost } from '@/lib/blog';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Star } from 'lucide-react';
@@ -19,13 +18,12 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  // Get all published blog posts, sorted by date
   const posts = await getAllBlogPosts();
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20 px-4'>
       <div className='max-w-6xl mx-auto py-12'>
-        {/* Header Section */}
+        {/* TODO: move to layout */}
         <header className='text-center mb-16'>
           <h1 className='text-4xl md:text-6xl font-bold text-white mb-6'>
             <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
@@ -109,6 +107,7 @@ export default async function BlogPage() {
           </>
         ) : (
           /* Empty State */
+          //   TODO: move to layout
           <div className='text-center py-16'>
             <div className='text-6xl mb-6'>📝</div>
             <h3 className='text-2xl font-bold text-white mb-4'>Coming Soon!</h3>
@@ -130,7 +129,9 @@ export default async function BlogPage() {
   );
 }
 
-// Featured post card component for special highlighting
+{
+  /* TODO: move to separate file */
+}
 function FeaturedPostCard({ post }: { post: BlogPost }) {
   return (
     <Link href={`/blog/${post.slug}`} className='group block'>
@@ -146,13 +147,11 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
           </span>
         </div>
 
-        {/* Title & Excerpt */}
         <h3 className='text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors'>
           {post.title}
         </h3>
         <p className='text-gray-300 mb-6 leading-relaxed'>{post.excerpt}</p>
 
-        {/* Meta & Tags */}
         <div className='space-y-4'>
           <div className='flex items-center text-sm text-gray-400'>
             <Calendar size={16} className='mr-2' />
@@ -178,7 +177,6 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
           )}
         </div>
 
-        {/* Read More Indicator */}
         <div className='flex items-center text-emerald-400 text-sm font-medium mt-6 group-hover:text-emerald-300 transition-colors'>
           <span>Read full post</span>
           <ArrowRight
@@ -192,11 +190,11 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
 }
 
 // Regular post card component
+// TODO: move to separate component file
 function BlogPostCard({ post }: { post: BlogPost }) {
   return (
     <Link href={`/blog/${post.slug}`} className='group block'>
       <article className='h-full p-6 bg-slate-800/60 rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 transform hover:scale-105'>
-        {/* Header with badges */}
         <div className='flex items-start justify-between mb-4'>
           <div className='flex gap-2'>
             {post.featured && (
@@ -211,19 +209,15 @@ function BlogPostCard({ post }: { post: BlogPost }) {
           </span>
         </div>
 
-        {/* Title */}
         <h3 className='text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors line-clamp-2'>
           {post.title}
         </h3>
 
-        {/* Excerpt */}
         <p className='text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed'>
           {post.excerpt}
         </p>
 
-        {/* Footer */}
         <div className='space-y-3 mt-auto'>
-          {/* Tags */}
           {post.tags.length > 0 && (
             <div className='flex flex-wrap gap-2'>
               {post.tags.slice(0, 2).map((tag: string) => (
@@ -242,7 +236,6 @@ function BlogPostCard({ post }: { post: BlogPost }) {
             </div>
           )}
 
-          {/* Date and Read More */}
           <div className='flex items-center justify-between text-xs text-gray-400'>
             <div className='flex items-center'>
               <Calendar size={14} className='mr-1' />

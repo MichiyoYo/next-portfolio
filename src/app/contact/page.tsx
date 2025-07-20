@@ -1,4 +1,3 @@
-// src/app/contact/page.tsx
 'use client';
 
 import { motion } from 'framer-motion';
@@ -13,7 +12,6 @@ import {
   Sparkles,
   Github,
   Linkedin,
-  ExternalLink,
 } from 'lucide-react';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
@@ -68,12 +66,6 @@ export default function ContactPage() {
       icon: Linkedin,
       label: 'LinkedIn',
       color: 'hover:text-blue-400',
-    },
-    {
-      href: 'https://dribbble.com/cristinalester',
-      icon: ExternalLink,
-      label: 'Dribbble',
-      color: 'hover:text-pink-400',
     },
   ];
 
