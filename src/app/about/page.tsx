@@ -151,10 +151,12 @@ export default function AboutPage() {
                   </p>
 
                   <p>
-                    When I&apos;m not coding, you&apos;ll find me mentoring
-                    aspiring developers, contributing to open source projects,
-                    or exploring the latest in web development trends. I believe
-                    the best way to grow is to lift others up too.
+                    When I&apos;m not coding, you&apos;ll find me crafting,
+                    painting, creating digital illustrations, playing video
+                    games, or exploring the great outdoors. I also enjoy
+                    mentoring aspiring developers, contributing to open source
+                    projects, or exploring the latest in web development trends.
+                    I believe the best way to grow is to lift others up too.
                   </p>
                 </div>
               </div>

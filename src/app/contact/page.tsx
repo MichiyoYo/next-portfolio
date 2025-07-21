@@ -32,8 +32,8 @@ export default function ContactPage() {
       icon: Mail,
       title: 'Email',
       description: 'Drop me a line anytime',
-      value: 'cristina.lester@example.com',
-      href: 'mailto:cristina.lester@example.com',
+      value: 'contact@cristinalester.dev',
+      href: 'mailto:contact@cristinalester.dev',
       color: 'from-emerald-500 to-teal-500',
     },
     {

@@ -57,7 +57,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>Back to Blog</span>
           </Link>
         </div>
-        {/* TODO: move header to a layout */}
         <header className='mb-12'>
           {post.featured && (
             <div className='mb-4'>

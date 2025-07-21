@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
-const AnimatedLogo = () => {
+export const AnimatedLogo = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   // Sparkle positions around the logo
@@ -142,5 +142,3 @@ const AnimatedLogo = () => {
     </Link>
   );
 };
-
-export default AnimatedLogo;

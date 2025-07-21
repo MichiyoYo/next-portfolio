@@ -5,15 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import AnimatedLogo from '@/components/ui/AnimatedLogo';
-
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-];
+import { AnimatedLogo } from '@/components/ui';
+import { NAV_ITEMS } from '@/lib/constants';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +35,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center space-x-8'>
-            {navItems.map((item) => {
+            {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <motion.div
@@ -97,7 +90,7 @@ export default function Navigation() {
         transition={{ duration: 0.3 }}
       >
         <div className='flex flex-col items-center justify-center h-full space-y-8'>
-          {navItems.map((item, index) => {
+          {NAV_ITEMS.map((item, index) => {
             const isActive = pathname === item.href;
             return (
               <motion.div

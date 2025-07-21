@@ -9,26 +9,21 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowDown,
-  Github,
-  Linkedin,
   Mail,
   Code,
-  Palette,
-  Rocket,
-  Database,
   Globe,
   Server,
-  Cloud,
   Wrench,
   Sparkles,
-  ExternalLink,
 } from 'lucide-react';
 import Link from 'next/link';
 import {
   fadeInUp,
   staggerChildren,
   scaleOnHover,
-  techStack,
+  SKILLS,
+  TECH_STACK,
+  SOCIAL_LINKS,
 } from '@/lib/constants';
 import { Fireflies } from '@/components/animations/Fireflies';
 
@@ -53,7 +48,6 @@ export default function HomePage() {
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 relative overflow-hidden'>
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-        {/* Firefly particles */}
         {[...Array(6)].map((_, i) => (
           <Fireflies key={i} delay={i * 2} index={i} />
         ))}
@@ -181,44 +175,11 @@ export default function HomePage() {
             <span> digital experiences</span>
           </motion.div>
 
-          {/* Enhanced skill badges with staggered animation */}
-          {/* TODO: move array to constants file */}
           <motion.div
             variants={fadeInUp}
             className='flex flex-wrap justify-center gap-4 mb-16'
           >
-            {[
-              {
-                icon: Code,
-                label: 'TypeScript',
-                color: 'from-blue-400 to-blue-600',
-              },
-              {
-                icon: Palette,
-                label: 'React',
-                color: 'from-cyan-400 to-cyan-600',
-              },
-              {
-                icon: Rocket,
-                label: 'Next.js',
-                color: 'from-gray-400 to-gray-600',
-              },
-              {
-                icon: Server,
-                label: 'Node.js',
-                color: 'from-green-400 to-green-600',
-              },
-              {
-                icon: Database,
-                label: 'PostgreSQL',
-                color: 'from-blue-500 to-indigo-600',
-              },
-              {
-                icon: Cloud,
-                label: 'AWS',
-                color: 'from-orange-400 to-orange-600',
-              },
-            ].map((skill, index) => (
+            {TECH_STACK.map((skill, index) => (
               <motion.div
                 key={skill.label}
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -277,32 +238,7 @@ export default function HomePage() {
             variants={fadeInUp}
             className='flex justify-center gap-8 mb-20'
           >
-            {[
-              {
-                href: 'https://github.com/cristinalester',
-                icon: Github,
-                label: 'GitHub',
-                color: 'hover:text-gray-300',
-              },
-              {
-                href: 'https://linkedin.com/in/cristinalester',
-                icon: Linkedin,
-                label: 'LinkedIn',
-                color: 'hover:text-blue-400',
-              },
-              {
-                href: 'https://dribbble.com/cristinalester',
-                icon: ExternalLink,
-                label: 'Dribbble',
-                color: 'hover:text-pink-400',
-              },
-              {
-                href: 'mailto:cristina.lester@example.com',
-                icon: Mail,
-                label: 'Email',
-                color: 'hover:text-emerald-400',
-              },
-            ].map((social, index) => (
+            {SOCIAL_LINKS.map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
@@ -357,7 +293,6 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      {/* Enhanced Tech Stack Section with More Dynamic Animations */}
       <section className='py-24 px-4 bg-slate-800/30 backdrop-blur-sm relative'>
         {/* Section background decoration */}
         <div className='absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5' />
@@ -418,7 +353,7 @@ export default function HomePage() {
               </div>
 
               <div className='grid grid-cols-2 gap-4'>
-                {techStack.frontend.map((tech) => (
+                {SKILLS.frontend.map((tech) => (
                   <motion.div
                     key={tech.label}
                     initial={{ opacity: 0, y: 30, scale: 0.8 }}
@@ -470,7 +405,7 @@ export default function HomePage() {
               </div>
 
               <div className='grid grid-cols-2 gap-4'>
-                {techStack.backend.map((tech) => (
+                {SKILLS.backend.map((tech) => (
                   <motion.div
                     key={tech.label}
                     initial={{ opacity: 0, y: 30, scale: 0.8 }}
@@ -524,7 +459,7 @@ export default function HomePage() {
               </div>
 
               <div className='grid grid-cols-2 gap-4'>
-                {techStack.tools.map((tech) => (
+                {SKILLS.tools.map((tech) => (
                   <motion.div
                     key={tech.label}
                     initial={{ opacity: 0, y: 30, scale: 0.8 }}

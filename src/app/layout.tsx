@@ -3,12 +3,14 @@ import { Lekton } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
+import { RICEPAPER_BG } from '@/lib/constants';
 
 const lekton = Lekton({
   weight: '400',
   variable: '--font-lekton',
   subsets: ['latin'],
 });
+
 export const metadata: Metadata = {
   title: {
     template: '%s | Cristina Lester - Full Stack Engineer + UX Designer',
@@ -59,15 +61,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang='en' className='scroll-smooth'>
       <body className={`${lekton.className} antialiased overflow-x-hidden`}>
         <div className='fixed inset-0 opacity-30 pointer-events-none'>
-          {/*
-          TODO:   Move the SVG data URL to a variable to avoid JSX parsing issues with quotes.
-          */}
           {(() => {
-            const ricePaperBg =
-              "bg-[url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%23ffffff\\' fill-opacity=\\'0.05\\'%3E%3Ccircle cx=\\'7\\' cy=\\'7\\' r=\\'1\\'/%3E%3Ccircle cx=\\'13\\' cy=\\'13\\' r=\\'1\\'/%3E%3Ccircle cx=\\'19\\' cy=\\'19\\' r=\\'1\\'/%3E%3Ccircle cx=\\'25\\' cy=\\'25\\' r=\\'1\\'/%3E%3Ccircle cx=\\'31\\' cy=\\'31\\' r=\\'1\\'/%3E%3Ccircle cx=\\'37\\' cy=\\'37\\' r=\\'1\\'/%3E%3Ccircle cx=\\'43\\' cy=\\'43\\' r=\\'1\\'/%3E%3Ccircle cx=\\'49\\' cy=\\'49\\' r=\\'1\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]";
             return (
               <div
-                className={`absolute inset-0 ${ricePaperBg} animate-pulse`}
+                className={`absolute inset-0 ${RICEPAPER_BG} animate-pulse`}
               ></div>
             );
           })()}
