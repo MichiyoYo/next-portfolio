@@ -1,8 +1,8 @@
-import { getAllBlogPosts, formatDate, BlogPost } from '@/lib/blog';
+import { getAllBlogPosts } from '@/lib/blog';
 import Link from 'next/link';
-import { Calendar, ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
+import { BlogPostCard, FeaturedPostCard } from '@/components/ui';
 
-// Metadata for the blog index page
 export const metadata = {
   title: 'Blog | Cristina Lester',
   description:
@@ -23,7 +23,6 @@ export default async function BlogPage() {
   return (
     <div className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20 px-4'>
       <div className='max-w-6xl mx-auto py-12'>
-        {/* TODO: move to layout */}
         <header className='text-center mb-16'>
           <h1 className='text-4xl md:text-6xl font-bold text-white mb-6'>
             <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
@@ -67,12 +66,11 @@ export default async function BlogPage() {
               </p>
             </div>
 
-            {/* Optional: Add RSS or subscribe link here */}
             <div className='text-gray-400 text-sm'>More posts coming soon!</div>
           </div>
         </div>
 
-        {posts.length > 0 ? (
+        {posts?.length > 0 ? (
           <>
             {/* Featured Posts Section - only show if we have featured posts */}
             {posts.some((post) => post.featured) && (
@@ -107,7 +105,6 @@ export default async function BlogPage() {
           </>
         ) : (
           /* Empty State */
-          //   TODO: move to layout
           <div className='text-center py-16'>
             <div className='text-6xl mb-6'>📝</div>
             <h3 className='text-2xl font-bold text-white mb-4'>Coming Soon!</h3>
@@ -126,132 +123,5 @@ export default async function BlogPage() {
         )}
       </div>
     </div>
-  );
-}
-
-{
-  /* TODO: move to separate file */
-}
-function FeaturedPostCard({ post }: { post: BlogPost }) {
-  return (
-    <Link href={`/blog/${post.slug}`} className='group block'>
-      <article className='h-full p-8 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 rounded-xl border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105'>
-        {/* Featured Badge */}
-        <div className='flex items-center justify-between mb-4'>
-          <span className='inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 text-white rounded-full text-sm font-medium'>
-            <Star size={14} fill='currentColor' />
-            Featured
-          </span>
-          <span className='text-xs text-gray-400 bg-slate-700 px-2 py-1 rounded'>
-            {post.readingTime} min read
-          </span>
-        </div>
-
-        <h3 className='text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors'>
-          {post.title}
-        </h3>
-        <p className='text-gray-300 mb-6 leading-relaxed'>{post.excerpt}</p>
-
-        <div className='space-y-4'>
-          <div className='flex items-center text-sm text-gray-400'>
-            <Calendar size={16} className='mr-2' />
-            {formatDate(post.date)}
-          </div>
-
-          {post.tags.length > 0 && (
-            <div className='flex flex-wrap gap-2'>
-              {post.tags.slice(0, 3).map((tag: string) => (
-                <span
-                  key={tag}
-                  className='text-xs bg-emerald-600/30 text-emerald-300 px-2 py-1 rounded'
-                >
-                  #{tag}
-                </span>
-              ))}
-              {post.tags.length > 3 && (
-                <span className='text-xs text-gray-400 px-2 py-1'>
-                  +{post.tags.length - 3} more
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className='flex items-center text-emerald-400 text-sm font-medium mt-6 group-hover:text-emerald-300 transition-colors'>
-          <span>Read full post</span>
-          <ArrowRight
-            size={16}
-            className='ml-2 transform group-hover:translate-x-1 transition-transform'
-          />
-        </div>
-      </article>
-    </Link>
-  );
-}
-
-// Regular post card component
-// TODO: move to separate component file
-function BlogPostCard({ post }: { post: BlogPost }) {
-  return (
-    <Link href={`/blog/${post.slug}`} className='group block'>
-      <article className='h-full p-6 bg-slate-800/60 rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 transform hover:scale-105'>
-        <div className='flex items-start justify-between mb-4'>
-          <div className='flex gap-2'>
-            {post.featured && (
-              <span className='inline-flex items-center gap-1 px-2 py-1 bg-emerald-600 text-white rounded text-xs font-medium'>
-                <Star size={12} fill='currentColor' />
-                Featured
-              </span>
-            )}
-          </div>
-          <span className='text-xs text-gray-400 bg-slate-700 px-2 py-1 rounded'>
-            {post.readingTime} min read
-          </span>
-        </div>
-
-        <h3 className='text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors line-clamp-2'>
-          {post.title}
-        </h3>
-
-        <p className='text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed'>
-          {post.excerpt}
-        </p>
-
-        <div className='space-y-3 mt-auto'>
-          {post.tags.length > 0 && (
-            <div className='flex flex-wrap gap-2'>
-              {post.tags.slice(0, 2).map((tag: string) => (
-                <span
-                  key={tag}
-                  className='text-xs bg-emerald-600/20 text-emerald-300 px-2 py-1 rounded'
-                >
-                  #{tag}
-                </span>
-              ))}
-              {post.tags.length > 2 && (
-                <span className='text-xs text-gray-400 px-2 py-1'>
-                  +{post.tags.length - 2}
-                </span>
-              )}
-            </div>
-          )}
-
-          <div className='flex items-center justify-between text-xs text-gray-400'>
-            <div className='flex items-center'>
-              <Calendar size={14} className='mr-1' />
-              {formatDate(post.date)}
-            </div>
-
-            <div className='flex items-center text-emerald-400 group-hover:text-emerald-300 transition-colors'>
-              <span>Read more</span>
-              <ArrowRight
-                size={14}
-                className='ml-1 transform group-hover:translate-x-1 transition-transform'
-              />
-            </div>
-          </div>
-        </div>
-      </article>
-    </Link>
   );
 }

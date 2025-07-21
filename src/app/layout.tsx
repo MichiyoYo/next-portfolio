@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Lekton } from 'next/font/google';
-import './globals.css';
 import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
 import { RICEPAPER_BG } from '@/lib/constants';
+import '@/styles/globals.css';
 
 const lekton = Lekton({
   weight: '400',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://cristinalester.rocks',
+    url: 'https://cristinalester.dev',
     title: 'Cristina Lester | Full Stack Engineer + UX Designer',
     description:
       'Full Stack Engineer + UX Designer specialized in React, TypeScipt, JavaScript and new, exciting web technologise with a sprinkle of AI',

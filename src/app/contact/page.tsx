@@ -22,6 +22,7 @@ import {
   SubmitButton,
   StatusMessage,
 } from '@/components/ui/form';
+import { Button } from '@/components/ui';
 
 export default function ContactPage() {
   const { formData, errors, status, handleChange, handleSubmit } =
@@ -351,13 +352,11 @@ export default function ContactPage() {
               about your project in person.
             </p>
             <div className='text-center'>
-              <Link
-                href='mailto:cristina.lester@example.com?subject=Coffee%20Chat%20Request'
-                className='inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors duration-200'
-              >
-                <Coffee size={18} />
-                Schedule a Coffee Chat
-              </Link>
+              <Button
+                label={'Schedule a Coffee Chat'}
+                href={'mailto:${EMAIL_ADDRESS}?subject=Coffee Chat Request'}
+                Icon={Coffee}
+              />
             </div>
           </motion.div>
         </div>

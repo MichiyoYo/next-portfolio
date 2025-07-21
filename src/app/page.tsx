@@ -15,17 +15,18 @@ import {
   Server,
   Wrench,
   Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import Link from 'next/link';
 import {
   fadeInUp,
   staggerChildren,
-  scaleOnHover,
   SKILLS,
   TECH_STACK,
   SOCIAL_LINKS,
 } from '@/lib/constants';
 import { Fireflies } from '@/components/animations/Fireflies';
+import { Button } from '@/components/ui';
 
 export default function HomePage() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -71,7 +72,7 @@ export default function HomePage() {
         />
       </div>
 
-      {/* Hero Section with Enhanced Animations */}
+      {/* Hero Section */}
       <motion.section
         ref={heroRef}
         className='min-h-screen flex items-center justify-center px-4 relative'
@@ -202,38 +203,25 @@ export default function HomePage() {
               </motion.div>
             ))}
           </motion.div>
-
+          {/* buttons container */}
           <motion.div
             variants={fadeInUp}
             className='flex flex-col sm:flex-row gap-6 justify-center mb-20'
           >
-            <motion.div {...scaleOnHover} whileHover={{ y: -3 }}>
-              <Link
-                href='/projects'
-                className='group px-10 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl font-semibold transition-all duration-300 inline-flex items-center gap-3 shadow-lg shadow-emerald-500/25'
-              >
-                <span>View My Work</span>
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <ArrowDown className='rotate-[-90deg]' size={18} />
-                </motion.div>
-              </Link>
-            </motion.div>
-            <motion.div {...scaleOnHover} whileHover={{ y: -3 }}>
-              <Link
-                href='/contact'
-                className='px-10 py-4 border-2 border-emerald-400/50 hover:border-emerald-400 hover:bg-emerald-400/10 text-white rounded-xl font-semibold transition-all duration-300 inline-flex items-center gap-3 backdrop-blur-sm'
-              >
-                <span>Get In Touch</span>
-                <Mail size={18} />
-              </Link>
-            </motion.div>
+            <Button
+              label='View My Work'
+              href='/projects'
+              Icon={ArrowRight}
+              animate
+            />
+            <Button
+              label='Get In Touch'
+              href='/contact'
+              Icon={Mail}
+              variant='secondary'
+            />
           </motion.div>
 
-          {/* Enhanced social links with floating animation */}
-          {/* TODO: move array to constanst file */}
           <motion.div
             variants={fadeInUp}
             className='flex justify-center gap-8 mb-20'
@@ -329,7 +317,7 @@ export default function HomePage() {
 
           <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
             {/* Frontend Technologies */}
-            {/* TODO: review tech stacks and update */}
+
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}

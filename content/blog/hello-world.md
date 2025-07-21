@@ -4,7 +4,7 @@ date: '2024-01-15'
 excerpt: "Welcome to my blog! This is where I'll document my learning adventures in web development, share insights, and connect with fellow developers."
 tags: ['personal', 'blogging', 'web-development']
 published: true
-featured: false
+featured: true
 ---
 
 # Hello World - Starting My Blog Journey

@@ -6,7 +6,7 @@ import { ExternalLink, Github, Calendar, Filter, Code } from 'lucide-react';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
 import { PROJECTS, CATEGORIES } from './constants';
-import { FeaturedBadge } from '@/components/ui';
+import { Badge } from '@/components/ui';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -158,7 +158,7 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
-                    {project.featured && <FeaturedBadge />}
+                    {<Badge isFeatured={project.featured} />}
 
                     {/* Hover overlay */}
                     <motion.div className='absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>

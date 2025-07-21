@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation';
-import { getBlogPostBySlug, getAllBlogPosts, formatDate } from '@/lib/blog';
+import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog';
+import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
+import styles from '@/styles/blog.module.css';
 
 interface BlogPostPageProps {
   params: {
@@ -108,18 +110,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           )}
         </header>
 
-        <div className='prose prose-lg prose-invert prose-emerald max-w-none'>
+        <div className={styles.content}>
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
 
-        {/* TODO: move footer to a layout */}
         <footer className='mt-16 pt-8 border-t border-slate-700'>
           <div className='text-center'>
             <p className='text-gray-300 mb-6'>
               Thank you for reading! If you enjoyed this post, feel free to
               share it or reach out to discuss it further.
             </p>
-
+            {/* TODO: change links to be Button from components/ui */}
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link
                 href='/contact'
