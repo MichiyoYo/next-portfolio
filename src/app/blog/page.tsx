@@ -92,7 +92,7 @@ export default async function BlogPage() {
             {/* All Posts Section */}
             <section>
               <h2 className='text-2xl font-bold text-white mb-6'>
-                {posts.some((post) => post.featured)
+                {posts?.some((post) => post.featured)
                   ? 'All Posts'
                   : 'Recent Posts'}
               </h2>

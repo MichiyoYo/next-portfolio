@@ -206,7 +206,7 @@ export default function HomePage() {
           {/* buttons container */}
           <motion.div
             variants={fadeInUp}
-            className='flex flex-col sm:flex-row gap-6 justify-center mb-20'
+            className='flex flex-col items-center sm:flex-row gap-6 justify-center mb-20'
           >
             <Button
               label='View My Work'

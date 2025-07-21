@@ -12,9 +12,9 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const primaryStyles =
-  'group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-lg shadow-emerald-500/25';
+  'group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-lg shadow-emerald-500/25 ';
 const secondaryStyles =
-  'border-2 border-emerald-400/50 hover:border-emerald-400 hover:bg-emerald-400/10 backdrop-blur-sm';
+  'border-1 border-emerald-400/50 hover:border-emerald-400 hover:bg-emerald-400/10 backdrop-blur-sm ';
 
 export function Button({
   label,
