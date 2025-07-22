@@ -14,7 +14,9 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
-
+import { Button } from '@/components/ui';
+import Image from 'next/image';
+// TODO: move constants to a separate file
 const skills = [
   {
     category: 'Frontend',
@@ -123,7 +125,7 @@ export default function AboutPage() {
                     About Me
                   </span>
                 </motion.div>
-
+                {/* TODO: rewrite */}
                 <h1 className='text-4xl md:text-6xl font-bold text-white mb-6'>
                   <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
                     Passionate Developer,
@@ -162,24 +164,18 @@ export default function AboutPage() {
               </div>
 
               <motion.div className='flex flex-wrap gap-4' variants={fadeInUp}>
-                <motion.div whileHover={{ scale: 1.02, y: -2 }}>
-                  <Link
-                    href='/projects'
-                    className='px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-lg font-medium transition-all duration-300 inline-flex items-center gap-2'
-                  >
-                    <Rocket size={18} />
-                    View My Projects
-                  </Link>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.02, y: -2 }}>
-                  <Link
-                    href='/contact'
-                    className='px-6 py-3 border-2 border-emerald-400/50 hover:border-emerald-400 hover:bg-emerald-400/10 text-white rounded-lg font-medium transition-all duration-300 inline-flex items-center gap-2'
-                  >
-                    <Coffee size={18} />
-                    Let&apos;s Chat
-                  </Link>
-                </motion.div>
+                <Button
+                  variant='primary'
+                  href='/projects'
+                  Icon={Rocket}
+                  label='View My Projects'
+                />
+                <Button
+                  variant='secondary'
+                  href='/contact'
+                  Icon={Coffee}
+                  label="Let's Chat"
+                />
               </motion.div>
             </motion.div>
 
@@ -192,9 +188,14 @@ export default function AboutPage() {
                 {/* Decorative background */}
                 <div className='absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl' />
 
-                {/* Profile image placeholder - replace with actual image */}
                 <div className='relative w-full h-full bg-gradient-to-br from-emerald-600 to-teal-600 rounded-full flex items-center justify-center text-white text-6xl font-bold border-4 border-white/10'>
-                  CL
+                  <Image
+                    src='/images/cre.png'
+                    alt='Profile Image'
+                    layout='fill'
+                    objectFit='cover'
+                    className='rounded-full'
+                  />
                 </div>
 
                 {/* Floating decorations */}
