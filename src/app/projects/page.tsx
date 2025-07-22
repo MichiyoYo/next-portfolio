@@ -2,7 +2,14 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { ExternalLink, Github, Calendar, Filter, Code } from 'lucide-react';
+import {
+  ExternalLink,
+  Github,
+  Calendar,
+  Filter,
+  Code,
+  Star,
+} from 'lucide-react';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
 import { PROJECTS, CATEGORIES } from './constants';
@@ -158,7 +165,7 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
-                    {<Badge isFeatured={project.featured} />}
+                    {project.featured && <Badge Icon={Star} label='Featured' />}
 
                     {/* Hover overlay */}
                     <motion.div className='absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>

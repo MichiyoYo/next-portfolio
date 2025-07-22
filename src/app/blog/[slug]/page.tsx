@@ -2,8 +2,9 @@ import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog';
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, Star } from 'lucide-react';
 import styles from '@/styles/blog.module.css';
+import { Badge, Tag } from '@/components/ui';
 
 interface BlogPostPageProps {
   params: {
@@ -62,9 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <header className='mb-12'>
           {post.featured && (
             <div className='mb-4'>
-              <span className='inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 text-white rounded-full text-sm font-medium'>
-                ⭐ Featured Post
-              </span>
+              <Badge Icon={Star} label='Featured' />
             </div>
           )}
 
@@ -95,15 +94,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {post.tags.length > 0 && (
             <div className='flex items-center gap-3 mt-6'>
-              <Tag size={16} className='text-gray-400' />
               <div className='flex flex-wrap gap-2'>
                 {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className='px-3 py-1 bg-emerald-600/20 text-emerald-300 rounded-full text-sm'
-                  >
-                    #{tag}
-                  </span>
+                  <Tag key={tag} name={tag} />
                 ))}
               </div>
             </div>

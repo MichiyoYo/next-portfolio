@@ -1,16 +1,21 @@
-import React from 'react';
-import { Star } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-export function Badge({ isFeatured }: { isFeatured?: boolean | undefined }) {
+export function Badge({
+  Icon,
+  label = '',
+  color = 'emerald-600',
+  className = '',
+}: {
+  Icon?: React.ComponentType<{ size?: number; fill?: string }>;
+  label?: string;
+  color?: string;
+  className?: string;
+}) {
+  if (!label && !Icon) return null;
   return (
-    <motion.div
-      className='absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-emerald-600 text-white rounded-full text-xs font-medium'
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.2 }}
+    <span
+      className={`inline-flex items-center gap-1 px-3 py-1 bg-${color} text-white rounded-full text-sm font-medium ${className}`}
     >
-      {(isFeatured && <Star size={12} fill='currentColor' />) || '💬'}
-    </motion.div>
+      {Icon && <Icon size={12} fill='currentColor' />}
+      {label && <span>{label}</span>}
+    </span>
   );
 }

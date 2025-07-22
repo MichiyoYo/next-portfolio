@@ -2,17 +2,18 @@ import Link from 'next/link';
 import { ArrowRight, Calendar, Star } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
 import type { BlogPost } from './types';
+import { Badge } from '../Badge';
+import { Tag } from '@/components/ui';
 
 export function FeaturedPostCard({ post }: { post: BlogPost }) {
+  if (!post) {
+    return null; // Handle case where post is not found
+  }
   return (
     <Link href={`/blog/${post.slug}`} className='group block'>
       <article className='h-full p-8 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 rounded-xl border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105'>
-        {/* Featured Badge */}
         <div className='flex items-center justify-between mb-4'>
-          <span className='inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 text-white rounded-full text-sm font-medium'>
-            <Star size={14} fill='currentColor' />
-            Featured
-          </span>
+          <Badge Icon={Star} label='Featured' />
           <span className='text-xs text-gray-400 bg-slate-700 px-2 py-1 rounded'>
             {post.readingTime} min read
           </span>
@@ -32,12 +33,7 @@ export function FeaturedPostCard({ post }: { post: BlogPost }) {
           {post.tags.length > 0 && (
             <div className='flex flex-wrap gap-2'>
               {post.tags.slice(0, 3).map((tag: string) => (
-                <span
-                  key={tag}
-                  className='text-xs bg-emerald-600/30 text-emerald-300 px-2 py-1 rounded'
-                >
-                  #{tag}
-                </span>
+                <Tag key={tag} name={tag} />
               ))}
               {post.tags.length > 3 && (
                 <span className='text-xs text-gray-400 px-2 py-1'>
