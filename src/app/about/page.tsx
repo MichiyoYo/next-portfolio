@@ -3,105 +3,26 @@
 import { motion } from 'framer-motion';
 import {
   Code2,
-  Lightbulb,
-  Target,
-  Users,
   Coffee,
-  BookOpen,
   Zap,
   Heart,
   Rocket,
+  Award,
+  Quote,
+  Star,
 } from 'lucide-react';
 import Link from 'next/link';
-import { fadeInUp, staggerChildren } from '@/lib/constants';
+import {
+  fadeInUp,
+  staggerChildren,
+  skills,
+  journey,
+  values,
+  certificates,
+  reviews,
+} from '@/lib/constants';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
-// TODO: move constants to a separate file
-const skills = [
-  {
-    category: 'Frontend',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-  },
-  {
-    category: 'Backend',
-    skills: ['Node.js', 'PostgreSQL', 'GraphQL', 'REST APIs', 'Docker'],
-  },
-  { category: 'Tools', skills: ['Git', 'VS Code', 'Figma', 'AWS', 'Vercel'] },
-  {
-    category: 'Soft Skills',
-    skills: [
-      'Problem Solving',
-      'Team Leadership',
-      'Communication',
-      'Mentoring',
-    ],
-  },
-];
-
-const journey = [
-  {
-    year: '2020',
-    title: 'Started Coding Journey',
-    description:
-      'Discovered my passion for web development through online courses and tutorials.',
-    icon: BookOpen,
-  },
-  {
-    year: '2021',
-    title: 'First Developer Role',
-    description:
-      'Joined a startup as a junior developer, learning React and modern web technologies.',
-    icon: Rocket,
-  },
-  {
-    year: '2022',
-    title: 'Full Stack Development',
-    description:
-      'Expanded skills to backend development, working with Node.js and databases.',
-    icon: Code2,
-  },
-  {
-    year: '2023',
-    title: 'Team Leadership',
-    description:
-      'Led development teams and mentored junior developers in best practices.',
-    icon: Users,
-  },
-  {
-    year: '2024',
-    title: 'Freelance & Innovation',
-    description:
-      'Started freelancing while exploring cutting-edge technologies and AI integration.',
-    icon: Lightbulb,
-  },
-];
-
-const values = [
-  {
-    icon: Target,
-    title: 'Quality First',
-    description:
-      'I believe in writing clean, maintainable code that stands the test of time.',
-  },
-  {
-    icon: Users,
-    title: 'Collaboration',
-    description:
-      'The best solutions come from diverse perspectives and open communication.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Continuous Learning',
-    description:
-      'Technology evolves rapidly, and I embrace learning new tools and techniques.',
-  },
-  {
-    icon: Heart,
-    title: 'User-Centered',
-    description:
-      'Every line of code should ultimately serve to create better user experiences.',
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -125,13 +46,14 @@ export default function AboutPage() {
                     About Me
                   </span>
                 </motion.div>
-                {/* TODO: rewrite */}
                 <h1 className='text-4xl md:text-6xl font-bold text-white mb-6'>
                   <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
-                    Passionate Developer,
+                    User first
                   </span>
                   <br />
-                  <span className='text-emerald-400'>Problem Solver</span>
+                  <span className='text-emerald-400 '>
+                    in every line of code
+                  </span>
                 </h1>
 
                 <div className='space-y-6 text-lg text-gray-300 leading-relaxed'>
@@ -153,12 +75,17 @@ export default function AboutPage() {
                   </p>
 
                   <p>
-                    When I&apos;m not coding, you&apos;ll find me crafting,
-                    painting, creating digital illustrations, playing video
-                    games, or exploring the great outdoors. I also enjoy
-                    mentoring aspiring developers, contributing to open source
-                    projects, or exploring the latest in web development trends.
-                    I believe the best way to grow is to lift others up too.
+                    What truly drives my work are the values of inclusivity,
+                    collaboration, and mutual support. I prioritize
+                    accessibility in everything I build, implementing standards
+                    and tools to ensure digital experiences are welcoming to
+                    everyone.
+                    <br />
+                    I&apos;m particularly passionate about solving problems for
+                    neurodivergent people and working with companies whose
+                    missions align with actively helping communities, especially
+                    minorities, because technology should be a force for
+                    positive change.
                   </p>
                 </div>
               </div>
@@ -395,6 +322,134 @@ export default function AboutPage() {
                 <p className='text-gray-300 leading-relaxed'>
                   {value.description}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates Section */}
+      <section className='py-20 px-4'>
+        <div className='max-w-6xl mx-auto'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className='text-center mb-16'
+          >
+            <h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>
+              <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
+                Certifications & Credentials
+              </span>
+            </h2>
+            <p className='text-lg text-gray-300 max-w-3xl mx-auto'>
+              Professional certifications that validate my expertise and
+              commitment to continuous learning.
+            </p>
+          </motion.div>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+            {certificates.map((cert, index) => (
+              <motion.div
+                key={cert.credentialId}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className='p-6 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300'
+              >
+                <motion.div
+                  className='w-16 h-16 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center text-white mb-6'
+                  whileHover={{ rotate: 5 }}
+                >
+                  <Award size={28} />
+                </motion.div>
+
+                <div className='flex items-start justify-between mb-4'>
+                  <div className='flex-1'>
+                    <h3 className='text-xl font-bold text-white mb-2'>
+                      {cert.title}
+                    </h3>
+                    <p className='text-emerald-400 font-medium mb-1'>
+                      {cert.issuer}
+                    </p>
+                    <p className='text-gray-400 text-sm'>Earned: {cert.date}</p>
+                  </div>
+                </div>
+
+                <p className='text-gray-300 leading-relaxed mb-4'>
+                  {cert.description}
+                </p>
+
+                <div className='text-xs text-gray-400 font-mono bg-slate-700/50 rounded-lg px-3 py-2'>
+                  ID: {cert.credentialId}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews & Recommendations Section */}
+      <section className='py-20 px-4 bg-slate-800/20 backdrop-blur-sm'>
+        <div className='max-w-6xl mx-auto'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className='text-center mb-16'
+          >
+            <h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>
+              <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
+                Reviews & Recommendations
+              </span>
+            </h2>
+            <p className='text-lg text-gray-300 max-w-3xl mx-auto'>
+              What colleagues and clients say about working with me.
+            </p>
+          </motion.div>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+            {reviews.map((review, index) => (
+              <motion.div
+                key={`${review.name}-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className='p-6 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300'
+              >
+                <motion.div
+                  className='w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center text-white mb-4'
+                  whileHover={{ rotate: 5 }}
+                >
+                  <Quote size={20} />
+                </motion.div>
+
+                {/* Star Rating */}
+                <div className='flex items-center gap-1 mb-4'>
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={16}
+                      className='text-emerald-400 fill-current'
+                    />
+                  ))}
+                </div>
+
+                <blockquote className='text-gray-300 leading-relaxed mb-6 italic'>
+                  &quot;{review.content}&quot;
+                </blockquote>
+
+                <div className='border-t border-slate-700/50 pt-4'>
+                  <div className='font-semibold text-white'>{review.name}</div>
+                  <div className='text-emerald-400 text-sm'>{review.role}</div>
+                  <div className='text-gray-400 text-sm'>{review.company}</div>
+                </div>
               </motion.div>
             ))}
           </div>

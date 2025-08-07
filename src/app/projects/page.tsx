@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
-import { PROJECTS, CATEGORIES } from './constants';
+import { PROJECTS, CATEGORIES } from '@/lib/constants';
 import { Badge } from '@/components/ui';
 
 export default function ProjectsPage() {
