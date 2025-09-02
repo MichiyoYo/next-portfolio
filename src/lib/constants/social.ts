@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 // Unified social links used across the application
 export const SOCIAL_LINKS = [
