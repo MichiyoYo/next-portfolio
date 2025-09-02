@@ -1,4 +1,4 @@
-import { Code, Globe, Smartphone, Package } from 'lucide-react';
+import { Code, Globe, Package } from 'lucide-react';
 
 export const PROJECTS = [
   {
@@ -113,6 +113,5 @@ export const PROJECTS = [
 export const CATEGORIES = [
   { value: 'all', label: 'All Projects', icon: Package },
   { value: 'web', label: 'Web Apps', icon: Globe },
-  { value: 'mobile', label: 'Mobile Apps', icon: Smartphone },
   { value: 'library', label: 'Libraries', icon: Code },
 ];

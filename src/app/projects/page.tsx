@@ -19,14 +19,14 @@ import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
+  const [showCaseStudiesOnly, setShowCaseStudiesOnly] = useState(false);
 
-  // Filter projects based on active category and featured toggle
+  // Filter projects based on active category and case study toggle
   const filteredProjects = PROJECTS.filter((project) => {
     const categoryMatch =
       activeCategory === 'all' || project.category === activeCategory;
-    const featuredMatch = !showFeaturedOnly || project.featured;
-    return categoryMatch && featuredMatch;
+    const caseStudyMatch = !showCaseStudiesOnly || hasCaseStudy(project.title);
+    return categoryMatch && caseStudyMatch;
   });
 
   return (
@@ -104,29 +104,29 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            {/* Featured Toggle */}
+            {/* Case Studies Toggle */}
             <motion.label
               className='flex items-center gap-3 text-gray-300 cursor-pointer'
               whileHover={{ scale: 1.02 }}
             >
-              <span className='font-medium'>Featured only</span>
+              <span className='font-medium'>Case Studies only</span>
               <div className='relative'>
                 <input
                   type='checkbox'
-                  checked={showFeaturedOnly}
-                  onChange={(e) => setShowFeaturedOnly(e.target.checked)}
+                  checked={showCaseStudiesOnly}
+                  onChange={(e) => setShowCaseStudiesOnly(e.target.checked)}
                   className='sr-only'
                 />
                 <motion.div
                   className={`w-12 h-6 rounded-full transition-colors duration-200 ${
-                    showFeaturedOnly ? 'bg-emerald-600' : 'bg-slate-600'
+                    showCaseStudiesOnly ? 'bg-emerald-600' : 'bg-slate-600'
                   }`}
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
                     className='w-5 h-5 bg-white rounded-full shadow-lg'
                     animate={{
-                      x: showFeaturedOnly ? 26 : 2,
+                      x: showCaseStudiesOnly ? 26 : 2,
                     }}
                     transition={{ duration: 0.2 }}
                     style={{ y: 2 }}
@@ -305,7 +305,7 @@ export default function ProjectsPage() {
               <motion.button
                 onClick={() => {
                   setActiveCategory('all');
-                  setShowFeaturedOnly(false);
+                  setShowCaseStudiesOnly(false);
                 }}
                 className='px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors'
                 whileHover={{ scale: 1.05 }}

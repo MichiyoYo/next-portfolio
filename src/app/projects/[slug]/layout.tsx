@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github, Calendar } from 'lucide-react';
 import Link from 'next/link';
@@ -10,13 +11,14 @@ import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 
 interface ProjectLayoutProps {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function ProjectLayout({ children, params }: ProjectLayoutProps) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+  const resolvedParams = React.use(params);
+  const caseStudy = getCaseStudyBySlug(resolvedParams.slug);
 
   if (!caseStudy) {
     notFound();

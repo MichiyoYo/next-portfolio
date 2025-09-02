@@ -4,13 +4,14 @@ import { CaseStudyContent } from '@/components/sections/CaseStudyContent';
 import { CaseStudy } from '@/lib/constants/case-studies';
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const resolvedParams = await params;
+  const caseStudy = getCaseStudyBySlug(resolvedParams.slug);
 
   if (!caseStudy) {
     notFound();
