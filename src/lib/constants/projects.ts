@@ -47,6 +47,21 @@ export const PROJECTS = [
     completedDate: '2024-07-01',
   },
   {
+    id: 'experimentation-platform',
+    title: 'A/B Testing Experimentation Platform',
+    description:
+      'Enterprise-scale platform for centralizing A/B test documentation, communications, launch capabilities, and results across multiple games.',
+    longDescription:
+      'Led a multidisciplinary team of 7 members over 3 years to develop a comprehensive A/B testing platform. Built with React and Node.js, the platform replaced legacy systems and integrated with complex API services. Managed feature development from concept to delivery, supporting multiple test environments and significantly increasing test volume across game portfolios.',
+    image: '/api/placeholder/600/400',
+    technologies: ['React', 'Node.js', 'Java', 'API Integration', 'Figma'],
+    category: 'web',
+    featured: true,
+    githubUrl: null,
+    liveUrl: null,
+    completedDate: '2023-12-01',
+  },
+  {
     id: 'huefocus',
     title: 'HueFocus',
     description:
