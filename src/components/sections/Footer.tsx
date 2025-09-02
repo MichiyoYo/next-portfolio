@@ -2,38 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Github, Linkedin, ExternalLink, Heart, Code } from 'lucide-react';
+import { Heart, Code } from 'lucide-react';
+import { SOCIAL_LINKS, footerLinks } from '@/lib/constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      href: 'https://github.com/cristinalester',
-      icon: Github,
-      label: 'GitHub',
-      color: 'hover:text-gray-300',
-    },
-    {
-      href: 'https://linkedin.com/in/cristinalester',
-      icon: Linkedin,
-      label: 'LinkedIn',
-      color: 'hover:text-blue-400',
-    },
-    {
-      href: 'https://dribbble.com/cristinalester',
-      icon: ExternalLink,
-      label: 'Dribbble',
-      color: 'hover:text-pink-400',
-    },
-  ];
-
-  const footerLinks = [
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' },
-  ];
 
   return (
     <footer className='relative bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900/20 border-t border-emerald-500/20'>
@@ -97,7 +70,7 @@ export default function Footer() {
               Let&apos;s Connect
             </h4>
             <div className='flex gap-4'>
-              {socialLinks.map((social) => (
+              {SOCIAL_LINKS.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}

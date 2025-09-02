@@ -10,11 +10,9 @@ import {
   Clock,
   Coffee,
   Sparkles,
-  Github,
-  Linkedin,
 } from 'lucide-react';
 import Link from 'next/link';
-import { fadeInUp, staggerChildren } from '@/lib/constants';
+import { fadeInUp, staggerChildren, SOCIAL_LINKS } from '@/lib/constants';
 import { useContactForm } from '@/hooks/useContactForm';
 import {
   FormField,
@@ -52,21 +50,6 @@ export default function ContactPage() {
       value: '24 hours',
       href: null,
       color: 'from-amber-500 to-orange-500',
-    },
-  ];
-
-  const socialLinks = [
-    {
-      href: 'https://github.com/cristinalester',
-      icon: Github,
-      label: 'GitHub',
-      color: 'hover:text-gray-300',
-    },
-    {
-      href: 'https://linkedin.com/in/cristinalester',
-      icon: Linkedin,
-      label: 'LinkedIn',
-      color: 'hover:text-blue-400',
     },
   ];
 
@@ -307,7 +290,7 @@ export default function ContactPage() {
             </p>
 
             <div className='flex justify-center gap-6'>
-              {socialLinks.map((link, index) => (
+              {SOCIAL_LINKS.map((link, index) => (
                 <motion.div
                   key={link.label}
                   initial={{ opacity: 0, scale: 0.8 }}
