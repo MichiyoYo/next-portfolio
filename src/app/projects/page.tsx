@@ -13,6 +13,7 @@ import {
 import Link from 'next/link';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
 import { PROJECTS, CATEGORIES } from '@/lib/constants';
+import { hasCaseStudy, getProjectUrl } from '@/lib/utils';
 import { Badge } from '@/components/ui';
 
 export default function ProjectsPage() {
@@ -143,132 +144,147 @@ export default function ProjectsPage() {
             className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
           >
             <AnimatePresence mode='wait'>
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  whileHover={{ y: -8 }}
-                  className='group bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 overflow-hidden'
-                >
-                  {/* Project Image */}
-                  <div className='relative h-48 overflow-hidden'>
-                    <div className='w-full h-full bg-gradient-to-br from-emerald-600/20 to-teal-600/20 flex items-center justify-center'>
-                      {/* Placeholder for project image */}
-                      <div className='text-emerald-400/60 text-4xl font-bold'>
-                        {project.category === 'web' && '🌐'}
-                        {project.category === 'mobile' && '📱'}
-                        {project.category === 'library' && '📦'}
-                      </div>
-                    </div>
-
-                    {project.featured && <Badge Icon={Star} label='Featured' />}
-
-                    {/* Hover overlay */}
-                    <motion.div className='absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                      {project.githubUrl && (
-                        <motion.a
-                          href={project.githubUrl}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                          className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <Github size={20} />
-                        </motion.a>
+              {filteredProjects.map((project, index) => {
+                const projectUrl = getProjectUrl(project);
+                const isExternal = projectUrl.startsWith('http');
+                
+                const ProjectCard = (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    whileHover={{ y: -8 }}
+                    className='group bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 overflow-hidden'
+                  >
+                    {/* Project Image */}
+                    <div className='relative h-48 overflow-hidden'>
+                      {project.image !== '/api/placeholder/600/400' ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className='w-full h-full object-cover'
+                        />
+                      ) : (
+                        <div className='w-full h-full bg-gradient-to-br from-emerald-600/20 to-teal-600/20 flex items-center justify-center'>
+                          <div className='text-emerald-400/60 text-4xl font-bold'>
+                            {project.category === 'web' && '🌐'}
+                            {project.category === 'mobile' && '📱'}
+                            {project.category === 'library' && '📦'}
+                          </div>
+                        </div>
                       )}
-                      {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                          className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <ExternalLink size={20} />
-                        </motion.a>
-                      )}
-                    </motion.div>
-                  </div>
 
-                  {/* Project Content */}
-                  <div className='p-6'>
-                    <div className='flex items-start justify-between mb-3'>
-                      <h3 className='text-xl font-bold text-white group-hover:text-emerald-400 transition-colors'>
-                        {project.title}
-                      </h3>
-                      <span className='text-xs text-gray-400 bg-slate-700 px-2 py-1 rounded capitalize'>
-                        {project.category}
-                      </span>
-                    </div>
+                      {project.featured && <Badge Icon={Star} label='Featured' />}
 
-                    <p className='text-gray-300 text-sm mb-4 line-clamp-3'>
-                      {project.description}
-                    </p>
-
-                    {/* Technologies */}
-                    <div className='flex flex-wrap gap-2 mb-4'>
-                      {project.technologies.slice(0, 3).map((tech) => (
-                        <span
-                          key={tech}
-                          className='text-xs bg-emerald-600/20 text-emerald-300 px-2 py-1 rounded'
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <span className='text-xs text-gray-400 px-2 py-1'>
-                          +{project.technologies.length - 3}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Footer */}
-                    <div className='flex items-center justify-between text-xs text-gray-400'>
-                      <div className='flex items-center gap-1'>
-                        <Calendar size={14} />
-                        <span>
-                          {new Date(project.completedDate).toLocaleDateString(
-                            'en-US',
-                            {
-                              month: 'short',
-                              year: 'numeric',
-                            }
-                          )}
-                        </span>
-                      </div>
-
-                      <div className='flex gap-3'>
+                      {/* Hover overlay */}
+                      <motion.div className='absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                         {project.githubUrl && (
-                          <a
+                          <motion.a
                             href={project.githubUrl}
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='hover:text-white transition-colors'
+                            className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={(e) => e.stopPropagation()}
                           >
-                            <Github size={14} />
-                          </a>
+                            <Github size={20} />
+                          </motion.a>
                         )}
                         {project.liveUrl && (
-                          <a
+                          <motion.a
                             href={project.liveUrl}
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='hover:text-white transition-colors'
+                            className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={(e) => e.stopPropagation()}
                           >
-                            <ExternalLink size={14} />
-                          </a>
+                            <ExternalLink size={20} />
+                          </motion.a>
+                        )}
+                      </motion.div>
+                    </div>
+
+                    {/* Project Content */}
+                    <div className='p-6'>
+                      <div className='flex items-start justify-between mb-3'>
+                        <h3 className='text-xl font-bold text-white group-hover:text-emerald-400 transition-colors'>
+                          {project.title}
+                        </h3>
+                        <span className='text-xs text-gray-400 bg-slate-700 px-2 py-1 rounded capitalize'>
+                          {project.category}
+                        </span>
+                      </div>
+
+                      <p className='text-gray-300 text-sm mb-4 line-clamp-3'>
+                        {project.description}
+                      </p>
+
+                      {/* Technologies */}
+                      <div className='flex flex-wrap gap-2 mb-4'>
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className='text-xs bg-emerald-600/20 text-emerald-300 px-2 py-1 rounded'
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <span className='text-xs text-gray-400 px-2 py-1'>
+                            +{project.technologies.length - 3}
+                          </span>
                         )}
                       </div>
+
+                      {/* Footer */}
+                      <div className='flex items-center justify-between text-xs text-gray-400'>
+                        <div className='flex items-center gap-1'>
+                          <Calendar size={14} />
+                          <span>
+                            {new Date(project.completedDate).toLocaleDateString(
+                              'en-US',
+                              {
+                                month: 'short',
+                                year: 'numeric',
+                              }
+                            )}
+                          </span>
+                        </div>
+
+                        <div className='flex gap-3'>
+                          {hasCaseStudy(project.title) && (
+                            <span className='text-emerald-400 font-medium'>
+                              Case Study
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+
+                return isExternal ? (
+                  <a
+                    key={project.id}
+                    href={projectUrl}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='block'
+                  >
+                    {ProjectCard}
+                  </a>
+                ) : (
+                  <Link key={project.id} href={projectUrl} className='block'>
+                    {ProjectCard}
+                  </Link>
+                );
+              })}
             </AnimatePresence>
           </motion.div>
 

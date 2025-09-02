@@ -48,12 +48,12 @@ export const PROJECTS = [
   },
   {
     id: 'experimentation-platform',
-    title: 'A/B Testing Experimentation Platform',
+    title: 'A/B Testing Platform',
     description:
       'Enterprise-scale platform for centralizing A/B test documentation, communications, launch capabilities, and results across multiple games.',
     longDescription:
       'Led a multidisciplinary team of 7 members over 3 years to develop a comprehensive A/B testing platform. Built with React and Node.js, the platform replaced legacy systems and integrated with complex API services. Managed feature development from concept to delivery, supporting multiple test environments and significantly increasing test volume across game portfolios.',
-    image: '/api/placeholder/600/400',
+    image: '/images/expy.png',
     technologies: ['React', 'Node.js', 'Java', 'API Integration', 'Figma'],
     category: 'web',
     featured: true,
@@ -68,7 +68,7 @@ export const PROJECTS = [
       'A productivity timer app built with React and TypeScript, featuring customizable color themes and Notion template integration.',
     longDescription:
       'HueFocus is a modern productivity timer application that combines the Pomodoro technique with beautiful color-based themes. Built with React, Vite, and TypeScript, it features customizable timer settings, productivity tracking, and integrates with Notion templates for enhanced workflow management.',
-    image: '/api/placeholder/600/400',
+    image: '/images/huefocus.png',
     technologies: ['React', 'Vite', 'TypeScript', 'styled-components'],
     category: 'web',
     featured: true,
@@ -78,12 +78,13 @@ export const PROJECTS = [
   },
   {
     id: 'cod-modernwarfare2',
-    title: 'Call of Duty: Modern Warfare II',
+    title: 'Call of Duty: MW II',
     description:
       'Marketing website development for the blockbuster Call of Duty: Modern Warfare II game launch.',
     longDescription:
       'Contributed to the marketing sites team for Call of Duty: Modern Warfare II, one of the biggest gaming releases. Worked with HTML, CSS, JavaScript, jQuery, and custom CMS to create engaging promotional content and interactive features for the game launch.',
-    image: '/api/placeholder/600/400',
+    image:
+      'https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/store/games/mw2/overview/CORTEZ_KA_FINISH_BLEED_BRANDED_CL_16x9_051722_01.webp?imwidth=1920',
     technologies: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Custom CMS'],
     category: 'web',
     featured: true,
