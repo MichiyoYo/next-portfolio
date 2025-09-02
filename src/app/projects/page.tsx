@@ -182,30 +182,32 @@ export default function ProjectsPage() {
                       {/* Hover overlay */}
                       <motion.div className='absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                         {project.githubUrl && (
-                          <motion.a
-                            href={project.githubUrl}
-                            target='_blank'
-                            rel='noopener noreferrer'
+                          <motion.button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              window.open(project.githubUrl!, '_blank', 'noopener,noreferrer');
+                            }}
                             className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            onClick={(e) => e.stopPropagation()}
                           >
                             <Github size={20} />
-                          </motion.a>
+                          </motion.button>
                         )}
                         {project.liveUrl && (
-                          <motion.a
-                            href={project.liveUrl}
-                            target='_blank'
-                            rel='noopener noreferrer'
+                          <motion.button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              window.open(project.liveUrl!, '_blank', 'noopener,noreferrer');
+                            }}
                             className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            onClick={(e) => e.stopPropagation()}
                           >
                             <ExternalLink size={20} />
-                          </motion.a>
+                          </motion.button>
                         )}
                       </motion.div>
                     </div>

@@ -13,7 +13,7 @@ export const PROJECTS = [
     category: 'web',
     featured: true,
     githubUrl: 'https://github.com/cristinalester/my-portfolio',
-    liveUrl: 'https://cristinalester.rocks',
+    liveUrl: 'https://cristinalester.dev',
     completedDate: '2024-12-01',
   },
   {
