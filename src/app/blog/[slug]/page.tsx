@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, User, Star } from 'lucide-react';
 import styles from '@/styles/blog.module.css';
 import { Badge, Tag } from '@/components/ui';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -52,6 +53,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
+      <AnimatedBackground />
       <article className='max-w-4xl mx-auto px-4 py-12'>
         <div className='mb-8'>
           <Link

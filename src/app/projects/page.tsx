@@ -15,6 +15,7 @@ import { fadeInUp, staggerChildren } from '@/lib/constants';
 import { PROJECTS, CATEGORIES } from '@/lib/constants';
 import { hasCaseStudy, getProjectUrl } from '@/lib/utils';
 import { Badge } from '@/components/ui';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -30,6 +31,7 @@ export default function ProjectsPage() {
 
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
+      <AnimatedBackground />
       {/* Hero Section */}
       <section className='py-20 px-4'>
         <div className='max-w-6xl mx-auto'>

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { fadeInUp, staggerChildren } from '@/lib/constants';
 import { getCaseStudyBySlug } from '@/lib/utils';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 
 interface ProjectLayoutProps {
   children: React.ReactNode;
@@ -23,6 +24,7 @@ export default function ProjectLayout({ children, params }: ProjectLayoutProps) 
 
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
+      <AnimatedBackground />
       {/* Header */}
       <section className='py-12 px-4'>
         <div className='max-w-4xl mx-auto'>

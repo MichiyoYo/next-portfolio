@@ -2,6 +2,7 @@ import { getAllBlogPosts } from '@/lib/blog';
 import Link from 'next/link';
 import { ArrowRight, Star } from 'lucide-react';
 import { BlogPostCard, FeaturedPostCard } from '@/components/ui';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 
 export const metadata = {
   title: 'Blog | Cristina Lester',
@@ -22,6 +23,7 @@ export default async function BlogPage() {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20 px-4'>
+      <AnimatedBackground />
       <div className='max-w-6xl mx-auto py-12'>
         <header className='text-center mb-16'>
           <h1 className='text-4xl md:text-6xl font-bold text-white mb-6'>
