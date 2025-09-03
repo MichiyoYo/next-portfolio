@@ -31,7 +31,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className='md:col-span-2'
+            className='md:col-span-2 text-center md:text-left'
           >
             <Link href='/' className='inline-block mb-4'>
               <motion.h3
@@ -43,7 +43,7 @@ export default function Footer() {
             </Link>
 
             {/* Quick Links */}
-            <div className='flex flex-wrap gap-4 mb-6'>
+            <div className='flex flex-wrap gap-4 mb-6 justify-center md:justify-start'>
               {footerLinks.map((link) => (
                 <motion.div key={link.href} whileHover={{ scale: 1.05 }}>
                   <Link
@@ -63,7 +63,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className='flex flex-col items-start md:items-end'
+            className='flex flex-col items-center md:items-end'
           >
             <h4 className='text-white font-semibold mb-4 flex items-center gap-2'>
               <Code size={16} className='text-emerald-400' />
@@ -94,11 +94,11 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className='pt-8 border-t border-slate-700/50 flex flex-col md:flex-row justify-between items-center gap-4'
+          className='pt-8 border-t border-slate-700/50 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left'
         >
-          <div className='flex items-center gap-2 text-gray-400 text-sm'>
+          <div className='flex flex-wrap items-center justify-center md:justify-start gap-1 text-gray-400 text-sm'>
             <span>© {currentYear} Cristina Lester. Built with</span>
-            <Heart size={14} className='text-red-400 animate-pulse' />
+            <Heart size={14} className='text-red-400 animate-pulse inline-block mx-1' />
             <span>and lots of coffee.</span>
           </div>
 

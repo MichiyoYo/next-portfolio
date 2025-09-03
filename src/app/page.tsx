@@ -252,7 +252,7 @@ export default function HomePage() {
           {/* Animated scroll indicator */}
           <motion.div
             variants={fadeInUp}
-            className='absolute -bottom-30 left-1/2 transform mt-20 sm:mt-40 -translate-x-1/2'
+            className='absolute -bottom-10 sm:-bottom-30 left-1/2 transform mt-8 sm:mt-20 md:mt-40 -translate-x-1/2'
           >
             <motion.div
               animate={{

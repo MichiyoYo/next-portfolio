@@ -19,7 +19,7 @@ export default function Navigation() {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     // Cleanup function to restore scroll on unmount
     return () => {
       document.body.style.overflow = 'unset';
@@ -97,16 +97,11 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       <motion.div
-        className='md:hidden fixed inset-0 top-16 backdrop-blur-2xl z-40 border-t border-white/10'
+        className='md:hidden fixed inset-0 top-16 h-screen bg-gradient-to-b  from-slate-950 via-slate-950 to-emerald-950/80 z-40 border-t border-white/10'
         variants={menuVariants}
         initial='closed'
         animate={isMenuOpen ? 'open' : 'closed'}
         transition={{ duration: 0.3 }}
-        style={{
-          height: '100vh',
-          background:
-            'linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(30, 41, 59, 0.95) 100%)',
-        }}
       >
         <div className='flex flex-col items-center justify-center h-full space-y-8'>
           {NAV_ITEMS.map((item, index) => {
