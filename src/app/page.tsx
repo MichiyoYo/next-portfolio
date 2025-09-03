@@ -75,7 +75,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
-        className='min-h-screen flex items-center justify-center px-4 relative'
+        className='min-h-screen flex items-center justify-center px-4 relative pt-20 pb-10'
         style={{ y, opacity }}
       >
         <motion.div
@@ -126,7 +126,7 @@ export default function HomePage() {
           {/* Animated name with gradient and glow effect */}
           <motion.h1
             variants={fadeInUp}
-            className='text-6xl md:text-8xl font-bold mb-8 relative'
+            className='text-4xl sm:text-6xl md:text-8xl font-bold mb-8 relative'
           >
             <motion.span
               className='bg-gradient-to-r from-white via-emerald-200 to-teal-300 bg-clip-text text-transparent relative'
@@ -145,7 +145,7 @@ export default function HomePage() {
           {/* Dynamic subtitle with word cycling */}
           <motion.div
             variants={fadeInUp}
-            className='text-xl md:text-3xl text-gray-300 mb-12 leading-relaxed'
+            className='text-lg sm:text-xl md:text-3xl text-gray-300 mb-12 leading-relaxed px-4'
           >
             <span>Full Stack Developer crafting </span>
             <AnimatePresence mode='wait'>
@@ -178,7 +178,7 @@ export default function HomePage() {
 
           <motion.div
             variants={fadeInUp}
-            className='flex flex-wrap justify-center gap-4 mb-16'
+            className='flex flex-wrap justify-center gap-3 mb-16 px-4'
           >
             {TECH_STACK.map((skill, index) => (
               <motion.div
@@ -196,17 +196,17 @@ export default function HomePage() {
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-3 px-6 py-3 bg-gradient-to-r ${skill.color} text-white rounded-full shadow-lg backdrop-blur-sm border border-white/20`}
+                className={`flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r ${skill.color} text-white rounded-full shadow-lg backdrop-blur-sm border border-white/20`}
               >
-                <skill.icon size={18} />
-                <span className='text-sm font-medium'>{skill.label}</span>
+                <skill.icon size={16} className="sm:size-18" />
+                <span className='text-xs sm:text-sm font-medium'>{skill.label}</span>
               </motion.div>
             ))}
           </motion.div>
           {/* buttons container */}
           <motion.div
             variants={fadeInUp}
-            className='flex flex-col items-center sm:flex-row gap-6 justify-center mb-20'
+            className='flex flex-col items-center sm:flex-row gap-4 sm:gap-6 justify-center mb-20 px-4'
           >
             <Button
               label='View My Work'
@@ -224,7 +224,7 @@ export default function HomePage() {
 
           <motion.div
             variants={fadeInUp}
-            className='flex justify-center gap-8 mb-20'
+            className='flex justify-center gap-4 sm:gap-8 mb-20 px-4'
           >
             {SOCIAL_LINKS.map((social, index) => (
               <motion.a
@@ -252,7 +252,7 @@ export default function HomePage() {
           {/* Animated scroll indicator */}
           <motion.div
             variants={fadeInUp}
-            className='absolute -bottom-30 left-1/2 transform mt-40 -translate-x-1/2'
+            className='absolute -bottom-30 left-1/2 transform mt-20 sm:mt-40 -translate-x-1/2'
           >
             <motion.div
               animate={{
@@ -303,12 +303,12 @@ export default function HomePage() {
               </span>
             </motion.div>
 
-            <h2 className='text-4xl md:text-6xl font-bold text-white mb-8'>
+            <h2 className='text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8'>
               <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
                 Tools & Technologies
               </span>
             </h2>
-            <p className='text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+            <p className='text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed px-4'>
               I work with cutting-edge technologies to build scalable,
               performant applications that deliver exceptional user experiences
               across all platforms.
@@ -502,7 +502,7 @@ export default function HomePage() {
 
             <div className='relative z-10 p-12'>
               <motion.h2
-                className='text-4xl md:text-5xl font-bold text-white mb-8'
+                className='text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8'
                 whileHover={{ scale: 1.02 }}
               >
                 <span className='bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'>
@@ -510,7 +510,7 @@ export default function HomePage() {
                 </span>
               </motion.h2>
               <motion.p
-                className='text-xl text-gray-300 leading-relaxed mb-10'
+                className='text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 px-4'
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.6 }}

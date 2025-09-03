@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { AnimatedLogo } from '@/components/ui';
 import { NAV_ITEMS } from '@/lib/constants';
@@ -11,6 +11,20 @@ import { NAV_ITEMS } from '@/lib/constants';
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    // Cleanup function to restore scroll on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
 
   const menuVariants = {
     closed: { opacity: 0, x: '100%' },
@@ -83,11 +97,16 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       <motion.div
-        className='md:hidden fixed inset-0 top-16 bg-slate-900/95 backdrop-blur-lg'
+        className='md:hidden fixed inset-0 top-16 backdrop-blur-2xl z-40 border-t border-white/10'
         variants={menuVariants}
         initial='closed'
         animate={isMenuOpen ? 'open' : 'closed'}
         transition={{ duration: 0.3 }}
+        style={{
+          height: '100vh',
+          background:
+            'linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(30, 41, 59, 0.95) 100%)',
+        }}
       >
         <div className='flex flex-col items-center justify-center h-full space-y-8'>
           {NAV_ITEMS.map((item, index) => {
@@ -102,10 +121,10 @@ export default function Navigation() {
               >
                 <Link
                   href={item.href}
-                  className={`text-2xl font-medium transition-colors duration-200 ${
+                  className={`text-2xl font-medium transition-colors duration-200 px-6 py-3 rounded-lg ${
                     isActive
-                      ? 'text-emerald-400'
-                      : 'text-gray-300 hover:text-emerald-300'
+                      ? 'text-emerald-400 bg-emerald-500/10'
+                      : 'text-gray-300 hover:text-emerald-300 hover:bg-slate-800/50'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
