@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { validateForm, contactFormSchema } from '@/lib/validators';
+import { sendEmail, initEmailJS } from '@/lib/email';
 
 export interface ContactFormData {
   name: string;
@@ -44,6 +45,11 @@ export function useContactForm(
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [status, setStatus] = useState<FormStatus>(initialStatus);
+
+  // Initialize EmailJS on mount
+  useEffect(() => {
+    initEmailJS();
+  }, []);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -123,22 +129,23 @@ export function useContactForm(
   };
 }
 
-// TODO: Implement form submission
-// Default form submission (can be replaced with actual API call)
+// EmailJS form submission
 async function defaultFormSubmission(data: ContactFormData): Promise<void> {
-  // Simulate API call
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  try {
+    // Prepare template parameters for EmailJS
+    const templateParams = {
+      from_name: data.name,
+      from_email: data.email,
+      subject: data.subject,
+      message: data.message,
+      to_email: 'contact@cristinalester.dev', // Your email address
+    };
 
-  // In a real app, you would send the data to your backend:
-  // const response = await fetch('/api/contact', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(data),
-  // });
-  //
-  // if (!response.ok) {
-  //   throw new Error('Failed to send message');
-  // }
-
-  console.log('Form submitted with data:', data);
+    await sendEmail(templateParams);
+    
+    console.log('Email sent successfully via EmailJS');
+  } catch (error) {
+    console.error('Failed to send email:', error);
+    throw new Error('Failed to send message. Please try again or contact me directly.');
+  }
 }
