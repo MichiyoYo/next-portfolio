@@ -198,7 +198,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
                 className={`flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r ${skill.color} text-white rounded-full shadow-lg backdrop-blur-sm border border-white/20`}
               >
-                <skill.icon size={16} className="sm:size-18" />
+                <skill.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className='text-xs sm:text-sm font-medium'>{skill.label}</span>
               </motion.div>
             ))}
