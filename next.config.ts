@@ -7,6 +7,16 @@ const nextConfig = {
   // Image optimization settings
   images: {
     formats: ['image/webp', 'image/avif'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.callofduty.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.crashbandicoot.com',
+      },
+    ],
   },
 };
 

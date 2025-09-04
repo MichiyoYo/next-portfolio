@@ -108,13 +108,13 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className={`group p-6 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 ${
+                className={`group p-6 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 text-center md:text-left ${
                   method.href ? 'cursor-pointer' : ''
                 }`}
                 onClick={() => method.href && window.open(method.href, '_self')}
               >
                 <motion.div
-                  className={`w-12 h-12 bg-gradient-to-r ${method.color} rounded-xl flex items-center justify-center text-white mb-4`}
+                  className={`w-12 h-12 bg-gradient-to-r ${method.color} rounded-xl flex items-center justify-center text-white mb-4 mx-auto md:mx-0`}
                   whileHover={{ rotate: 5 }}
                 >
                   <method.icon size={24} />
@@ -289,7 +289,7 @@ export default function ContactPage() {
               Prefer a different way to connect? Find me on these platforms
             </p>
 
-            <div className='flex justify-center gap-6'>
+            <div className='flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 max-w-sm sm:max-w-none mx-auto'>
               {SOCIAL_LINKS.map((link, index) => (
                 <motion.div
                   key={link.label}
@@ -298,12 +298,13 @@ export default function ContactPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, y: -5 }}
+                  className='w-full sm:w-auto'
                 >
                   <Link
                     href={link.href}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className={`group flex items-center gap-3 px-6 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 ${link.color}`}
+                    className={`group flex items-center justify-center sm:justify-start gap-3 px-4 sm:px-6 py-3 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 ${link.color} w-full sm:w-auto`}
                   >
                     <link.icon size={20} />
                     <span className='text-gray-300 font-medium'>

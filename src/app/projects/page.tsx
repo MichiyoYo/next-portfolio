@@ -16,6 +16,7 @@ import { PROJECTS, CATEGORIES } from '@/lib/constants';
 import { hasCaseStudy, getProjectUrl } from '@/lib/utils';
 import { Badge } from '@/components/ui';
 import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
+import Image from 'next/image';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -109,7 +110,7 @@ export default function ProjectsPage() {
               className='flex items-center gap-3 text-gray-300 cursor-pointer'
               whileHover={{ scale: 1.02 }}
             >
-              <span className='font-medium'>Case Studies only</span>
+              <span className='font-medium'>Case Studies</span>
               <div className='relative'>
                 <input
                   type='checkbox'
@@ -149,7 +150,7 @@ export default function ProjectsPage() {
               {filteredProjects.map((project, index) => {
                 const projectUrl = getProjectUrl(project);
                 const isExternal = projectUrl.startsWith('http');
-                
+
                 const ProjectCard = (
                   <motion.div
                     key={project.id}
@@ -164,10 +165,12 @@ export default function ProjectsPage() {
                     {/* Project Image */}
                     <div className='relative h-48 overflow-hidden'>
                       {project.image !== '/api/placeholder/600/400' ? (
-                        <img
+                        <Image
                           src={project.image}
                           alt={project.title}
                           className='w-full h-full object-cover'
+                          layout='fill'
+                          objectFit='cover'
                         />
                       ) : (
                         <div className='w-full h-full bg-gradient-to-br from-emerald-600/20 to-teal-600/20 flex items-center justify-center'>
@@ -179,7 +182,9 @@ export default function ProjectsPage() {
                         </div>
                       )}
 
-                      {project.featured && <Badge Icon={Star} label='Featured' />}
+                      {project.featured && (
+                        <Badge Icon={Star} label='Featured' />
+                      )}
 
                       {/* Hover overlay */}
                       <motion.div className='absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
@@ -188,7 +193,11 @@ export default function ProjectsPage() {
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
-                              window.open(project.githubUrl!, '_blank', 'noopener,noreferrer');
+                              window.open(
+                                project.githubUrl!,
+                                '_blank',
+                                'noopener,noreferrer'
+                              );
                             }}
                             className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
                             whileHover={{ scale: 1.1 }}
@@ -202,7 +211,11 @@ export default function ProjectsPage() {
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
-                              window.open(project.liveUrl!, '_blank', 'noopener,noreferrer');
+                              window.open(
+                                project.liveUrl!,
+                                '_blank',
+                                'noopener,noreferrer'
+                              );
                             }}
                             className='p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors'
                             whileHover={{ scale: 1.1 }}
