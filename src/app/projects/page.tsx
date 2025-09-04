@@ -79,7 +79,7 @@ export default function ProjectsPage() {
             className='flex flex-col lg:flex-row gap-6 justify-between items-center mb-12 p-6 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50'
           >
             {/* Category Filters */}
-            <div className='flex items-center gap-4'>
+            <div className='flex flex-col lg:flex-row  items-center gap-4'>
               <div className='flex items-center gap-2 text-gray-400'>
                 <Filter size={20} />
                 <span className='font-medium'>Filter:</span>
@@ -324,7 +324,7 @@ export default function ProjectsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Show All Projects
+                Show All
               </motion.button>
             </motion.div>
           )}
