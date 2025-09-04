@@ -27,7 +27,7 @@ import Image from 'next/image';
 export default function AboutPage() {
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
-      <section className='py-20 px-4'>
+      <section className='py-20 px-10'>
         <div className='max-w-6xl mx-auto'>
           <motion.div
             initial='initial'
