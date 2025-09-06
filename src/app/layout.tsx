@@ -58,7 +58,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' className='scroll-smooth'>
-      <body className={`${lekton.className} antialiased overflow-x-hidden`}>
+      <body className={`${lekton.className} antialiased overflow-x-hidden bg-slate-900`}>
 
         <Navigation />
         <main className='relative z-10'>{children}</main>
