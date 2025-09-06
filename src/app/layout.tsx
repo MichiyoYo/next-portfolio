@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Lekton } from 'next/font/google';
 import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
-import { RICEPAPER_BG } from '@/lib/constants';
 import '@/styles/globals.css';
 
 const lekton = Lekton({
@@ -60,15 +59,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' className='scroll-smooth'>
       <body className={`${lekton.className} antialiased overflow-x-hidden`}>
-        <div className='fixed inset-0 opacity-30 pointer-events-none'>
-          {(() => {
-            return (
-              <div
-                className={`absolute inset-0 ${RICEPAPER_BG} animate-pulse`}
-              ></div>
-            );
-          })()}
-        </div>
 
         <Navigation />
         <main className='relative z-10'>{children}</main>

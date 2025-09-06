@@ -5,38 +5,33 @@ import { motion } from 'framer-motion';
 export function AnimatedBackground() {
   return (
     <div className='fixed inset-0 -z-10 overflow-hidden'>
-      {/* Color-shifting gradient background */}
+      {/* Simplified stable gradient background */}
+      <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-950/10 to-slate-900' />
+      
+      {/* Subtle moving orbs */}
       <motion.div
-        className='absolute inset-0 opacity-25'
+        className='absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl'
         animate={{
-          background: [
-            'radial-gradient(circle at 30% 30%, rgb(20, 184, 166) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgb(34, 197, 94) 0%, transparent 50%)',
-            'radial-gradient(circle at 40% 60%, rgb(79, 70, 229) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgb(20, 184, 166) 0%, transparent 50%)',
-            'radial-gradient(circle at 20% 80%, rgb(34, 197, 94) 0%, transparent 50%), radial-gradient(circle at 60% 40%, rgb(79, 70, 229) 0%, transparent 50%)',
-            'radial-gradient(circle at 30% 30%, rgb(20, 184, 166) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgb(34, 197, 94) 0%, transparent 50%)',
-          ],
+          scale: [1, 1.1, 1],
+          x: [-20, 20, -20],
+          y: [-10, 10, -10],
         }}
         transition={{
-          duration: 20,
+          duration: 15,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
-
-      {/* Secondary slower gradient */}
+      
       <motion.div
-        className='absolute inset-0 opacity-12'
+        className='absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/8 rounded-full blur-3xl'
         animate={{
-          background: [
-            'linear-gradient(45deg, rgb(79, 70, 229) 0%, transparent 30%, rgb(20, 184, 166) 70%, transparent 100%)',
-            'linear-gradient(135deg, rgb(34, 197, 94) 0%, transparent 30%, rgb(79, 70, 229) 70%, transparent 100%)',
-            'linear-gradient(225deg, rgb(20, 184, 166) 0%, transparent 30%, rgb(34, 197, 94) 70%, transparent 100%)',
-            'linear-gradient(315deg, rgb(79, 70, 229) 0%, transparent 30%, rgb(20, 184, 166) 70%, transparent 100%)',
-            'linear-gradient(45deg, rgb(79, 70, 229) 0%, transparent 30%, rgb(20, 184, 166) 70%, transparent 100%)',
-          ],
+          scale: [1.1, 1, 1.1],
+          x: [20, -20, 20],
+          y: [10, -10, 10],
         }}
         transition={{
-          duration: 30,
+          duration: 18,
           repeat: Infinity,
           ease: 'easeInOut',
         }}

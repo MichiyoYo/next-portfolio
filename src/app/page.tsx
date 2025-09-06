@@ -344,26 +344,21 @@ export default function HomePage() {
                 {SKILLS.frontend.map((tech) => (
                   <motion.div
                     key={tech.label}
-                    initial={{ opacity: 0, y: 30, scale: 0.8 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     transition={{
                       duration: 0.6,
-                      delay: tech.delay,
-                      ease: 'backOut',
+                      delay: tech.delay * 0.1,
+                      ease: 'easeIn',
                     }}
                     viewport={{ once: true }}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -5,
-                      transition: { duration: 0.2 },
-                    }}
-                    className='group p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 cursor-pointer'
+                    className='p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50'
                   >
                     <tech.icon
-                      className={`${tech.color} mb-3 group-hover:scale-110 transition-transform duration-200`}
+                      className={`${tech.color} mb-3`}
                       size={32}
                     />
-                    <span className='text-gray-300 text-sm font-medium block group-hover:text-white transition-colors duration-200'>
+                    <span className='text-gray-300 text-sm font-medium block'>
                       {tech.label}
                     </span>
                   </motion.div>
@@ -396,26 +391,21 @@ export default function HomePage() {
                 {SKILLS.backend.map((tech) => (
                   <motion.div
                     key={tech.label}
-                    initial={{ opacity: 0, y: 30, scale: 0.8 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     transition={{
                       duration: 0.6,
-                      delay: tech.delay,
-                      ease: 'backOut',
+                      delay: tech.delay * 0.1,
+                      ease: 'easeIn',
                     }}
                     viewport={{ once: true }}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -5,
-                      transition: { duration: 0.2 },
-                    }}
-                    className='group p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 cursor-pointer'
+                    className='p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50'
                   >
                     <tech.icon
-                      className={`${tech.color} mb-3 group-hover:scale-110 transition-transform duration-200`}
+                      className={`${tech.color} mb-3`}
                       size={32}
                     />
-                    <span className='text-gray-300 text-sm font-medium block group-hover:text-white transition-colors duration-200'>
+                    <span className='text-gray-300 text-sm font-medium block'>
                       {tech.label}
                     </span>
                   </motion.div>
@@ -450,26 +440,21 @@ export default function HomePage() {
                 {SKILLS.tools.map((tech) => (
                   <motion.div
                     key={tech.label}
-                    initial={{ opacity: 0, y: 30, scale: 0.8 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     transition={{
                       duration: 0.6,
-                      delay: tech.delay,
-                      ease: 'backOut',
+                      delay: tech.delay * 0.1,
+                      ease: 'easeIn',
                     }}
                     viewport={{ once: true }}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -5,
-                      transition: { duration: 0.2 },
-                    }}
-                    className='group p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-amber-500/30 transition-all duration-300 cursor-pointer'
+                    className='p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50'
                   >
                     <tech.icon
-                      className={`${tech.color} mb-3 group-hover:scale-110 transition-transform duration-200`}
+                      className={`${tech.color} mb-3`}
                       size={32}
                     />
-                    <span className='text-gray-300 text-sm font-medium block group-hover:text-white transition-colors duration-200'>
+                    <span className='text-gray-300 text-sm font-medium block'>
                       {tech.label}
                     </span>
                   </motion.div>
