@@ -31,7 +31,7 @@ export default function ProjectsPage() {
   });
 
   return (
-    <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
+    <main className='min-h-screen pt-20'>
       <AnimatedBackground />
       {/* Hero Section */}
       <section className='py-20 px-4'>

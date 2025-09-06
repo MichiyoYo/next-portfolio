@@ -22,7 +22,7 @@ export default async function BlogPage() {
   const posts = await getAllBlogPosts();
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20 px-4'>
+    <div className='min-h-screen pt-20 px-4'>
       <AnimatedBackground />
       <div className='max-w-6xl mx-auto py-12'>
         <header className='text-center mb-16'>

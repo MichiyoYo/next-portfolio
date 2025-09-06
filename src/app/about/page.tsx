@@ -21,12 +21,14 @@ import {
   certificates,
   reviews,
 } from '@/lib/constants';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
 
 export default function AboutPage() {
   return (
-    <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
+    <main className='min-h-screen pt-20'>
+      <AnimatedBackground />
       <section className='py-20 px-10'>
         <div className='max-w-6xl mx-auto'>
           <motion.div
@@ -414,7 +416,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
             {reviews.map((review, index) => (
               <motion.div
                 key={`${review.name}-${index}`}

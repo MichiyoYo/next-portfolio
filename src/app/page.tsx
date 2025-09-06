@@ -26,6 +26,7 @@ import {
   SOCIAL_LINKS,
 } from '@/lib/constants';
 import { Fireflies } from '@/components/animations/Fireflies';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 import { Button } from '@/components/ui';
 
 export default function HomePage() {
@@ -47,7 +48,8 @@ export default function HomePage() {
   }, [cyclicWords.length]);
 
   return (
-    <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 relative overflow-hidden'>
+    <main className='min-h-screen relative overflow-hidden'>
+      <AnimatedBackground />
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {[...Array(6)].map((_, i) => (
           <Fireflies key={i} delay={i * 2} index={i} />

@@ -147,12 +147,4 @@ export const reviews = [
       'As an intern at Activision, I was fortunate to have Cristina as my mentor. She was consistently enthusiastic about teaching and made time to ensure I learned effectively. Her mentorship prepared me well for my future career, offering insightful tips that continue to guide my development. Cristina was patient, passionate, and made learning engaging. Her guidance has significantly shaped me as a developer, and I would recommend her mentorship to anyone looking to grow in this field.',
     rating: 5,
   },
-  {
-    name: 'David Kim',
-    role: 'Tech Lead',
-    company: 'DataFlow Systems',
-    content:
-      "Cristina's problem-solving abilities are outstanding. She tackled our application's complex performance issues with innovative approaches that impressed the entire team. Her solutions were not only effective but implemented with clean, maintainable code. Beyond technical skills, her collaborative nature and ability to explain complex concepts made project coordination seamless. She consistently delivered work ahead of schedule while maintaining exceptional quality standards.",
-    rating: 5,
-  },
 ];

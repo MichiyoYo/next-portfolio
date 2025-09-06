@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { fadeInUp, staggerChildren, SOCIAL_LINKS } from '@/lib/constants';
+import { AnimatedBackground } from '@/components/animations/AnimatedBackground';
 import { useContactForm } from '@/hooks/useContactForm';
 import {
   FormField,
@@ -54,7 +55,8 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className='min-h-screen bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 pt-20'>
+    <main className='min-h-screen pt-20'>
+      <AnimatedBackground />
       {/* Hero Section */}
       <section className='py-20 px-4'>
         <div className='max-w-6xl mx-auto'>
