@@ -112,6 +112,6 @@ export const PROJECTS = [
 
 export const CATEGORIES = [
   { value: 'all', label: 'All', icon: Package },
-  { value: 'web', label: 'Web Apps', icon: Globe },
-  { value: 'library', label: 'Libraries', icon: Code },
+  { value: 'web', label: 'Web', icon: Globe },
+  { value: 'library', label: 'Libs', icon: Code },
 ];

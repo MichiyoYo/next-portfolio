@@ -103,7 +103,7 @@ export default function Navigation() {
         animate={isMenuOpen ? 'open' : 'closed'}
         transition={{ duration: 0.3 }}
       >
-        <div className='flex flex-col items-center justify-center h-full space-y-8'>
+        <div className='flex flex-col items-center justify-start pt-40 h-full space-y-8'>
           {NAV_ITEMS.map((item, index) => {
             const isActive = pathname === item.href;
             return (
